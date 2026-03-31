@@ -1,0 +1,115 @@
+#menuToggle {
+    cursor: pointer;
+}
+
+.side-menu {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    /* Start off-screen */
+    width: 250px;
+    height: 100vh;
+    background-image: linear-gradient(45deg, var(--dropdownContentBackgroundColor), var(--dropdownContentBackgroundColorGradient));
+    padding: 20px;
+    z-index: 1000;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+    transition: left 0.3s ease;
+    overflow-y: auto;
+}
+
+.menu-open {
+    left: 0px;
+}
+
+.menu-close {
+    left: -250px;
+}
+
+/* Show the menu content on hover */
+
+/* Menu Content (Hidden by Default) */
+/* Base menu item container */
+.menu-item,
+.menu-item .menu-button {
+    width: 210px;
+    font-size: 14px;
+    border: none;
+    z-index: 1;
+    cursor: pointer;
+}
+
+/* Shared styling for both <button> and <a> menu links */
+.menu-item .menu-button,
+.menu-item .menu-button-link,
+.menu-item a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    color: var(--dropdownContentTextColor) !important;
+    padding: 7px 16px;
+    text-decoration: none;
+
+    background-color: transparent;
+    background-image: none;
+
+    border: none;
+    width: 100%;
+    text-align: left;
+    font: inherit;
+    cursor: pointer;
+}
+
+/* Hover state for both <button> and <a> */
+.menu-item a:hover,
+.menu-item .menu-button:hover,
+.menu-item .menu-button-link:hover {
+    background-color: var(--dropdownHoverBackColor);
+    color: var(--dropdownHoverTextColor) !important;
+
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 7px;
+
+    background-image: linear-gradient(45deg,
+            var(--dropdownHoverBackColor),
+            var(--dropdownHoverBackColorGradient));
+}
+
+/* Remove default button focus outlines on mobile */
+.menu-button-link:focus,
+.menu-button:focus {
+    outline: none;
+}
+
+
+/* Change the background color of the menu button when the menu content is shown */
+.menu:hover .dropbtn {
+    background-color: #3e8e41;
+}
+
+.menu-icon {
+    width: 25px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.menu-text {
+    flex-grow: 1;
+    font-size: 15px;
+}
+
+@media(max-width: 550px) {
+    .menu-text {
+        font-size: 17px;
+    }
+}
+
+.menu-signout {
+    margin-top: 50px;
+}
+
+#menu-overlay {
+    position: relative;
+    z-index: 1000;
+}

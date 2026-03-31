@@ -1,0 +1,70 @@
+﻿.page-height-mobile {
+    margin: 0;
+    padding: 0;
+    /*min-height: 100dvh;*/
+    min-height: var(--vh);
+}
+
+.page-layout-mobile {
+    padding-bottom: 50px;
+}
+
+.mobile-card {
+    display: block;
+    background-image: linear-gradient(45deg, var(--contentBackColor), var(--contentBackColorGradient));
+    width: 100vw;
+    border-bottom: 3px solid #CCCCCC;
+}
+
+    .mobile-card:empty{
+        display:none;
+    }
+
+.card-title-mobile {
+    clear: both;
+    padding: 7px 23px 7px 23px;
+    font-size: 21px;
+    font-weight: bold;
+    color: var(--contentHeaderTextColor) !important;
+    background-image: linear-gradient(45deg, var(--contentHeaderBackColor), var(--contentHeaderBackColorGradient));
+    width: 100%;
+    height: 45px !important;
+}
+
+.header-holder-mobile {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Ensures home icon, welcome banner, and sign-out button are spaced evenly */
+}
+
+.content-holder-mobile {
+    min-height: calc(var(--vh) - 140px);
+    height: auto;
+    padding-bottom: 50px;
+    width: 100%;
+}
+
+.content-holder-mobile-public {
+    padding-top:30px;
+    height: auto;
+    padding-bottom: 50px;
+    width: 100%;
+}
+
+.content-inner-mobile {
+    padding: 0px 15px 0px 15px;
+    width: 100%;
+    height: 100%;
+}
+
+.welcome-name-text-mobile {
+    
+}
+
+.label-mobile {
+    min-width: 70px;
+    float: left;
+    color: var(--textBoxLabelColor);
+    font-size: 14px;
+    font-weight: bold;
+}

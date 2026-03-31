@@ -1,0 +1,49 @@
+# --- Node / React ---
+node_modules/
+dist/
+build/
+.vite/
+.cache/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment files (never commit secrets)
+.env
+.env.local
+.env.development
+.env.production
+
+# --- Logs ---
+logs
+*.log
+*.log.*
+
+# --- OS files ---
+.DS_Store
+Thumbs.db
+
+# --- IDE / Editor ---
+.vscode/
+.idea/
+
+# --- .NET / C# ---
+bin/
+obj/
+*.user
+*.suo
+*.cache
+*.pdb
+*.mdb
+*.db
+*.jfm
+*.snk
+*.pfx
+
+# ASP.NET generated files
+*.Publish.xml
+
+# --- Sensitive config ---
+appsettings.json
+appsettings.Development.json
+appsettings.Production.json

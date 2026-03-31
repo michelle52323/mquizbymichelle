@@ -1,0 +1,15 @@
+<svg viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+    <title>success-standard-solid</title>
+
+    <!-- Define the Symbol -->
+    <symbol id="success-icon" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet">
+        <!-- Lighter Green-Gray for former black areas -->
+        <path d="M18,2A16,16,0,1,0,34,18,16,16,0,0,0,18,2ZM28.45,12.63,15.31,25.76,7.55,18a1.4,1.4,0,0,1,2-2l5.78,5.78L26.47,10.65a1.4,1.4,0,1,1,2,2Z" fill="#2E5F2C"/>
+        
+        <!-- Dark Forest Green for former white checkmark -->
+        <path d="M28.45,12.63,15.31,25.76,7.55,18a1.4,1.4,0,0,1,2-2l5.78,5.78L26.47,10.65a1.4,1.4,0,1,1,2,2Z" fill="#D4D4D4"/>
+    </symbol>
+
+    <!-- Use the Symbol -->
+    <use href="#success-icon" x="0" y="0" width="36" height="36"/>
+</svg>

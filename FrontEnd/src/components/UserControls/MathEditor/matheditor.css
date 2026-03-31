@@ -1,0 +1,294 @@
+:root {
+    --buttonActiveText: color-mix(in srgb, var(--buttonTextColor), white 15%);
+    --buttonActiveBackground: color-mix(in srgb, var(--buttonBackgroundColor), white 35%);
+    --buttonActiveBorder: color-mix(in srgb, var(--sortableBorder), black 35%);
+    --mathTextBoxBackground: color-mix(in srgb, var(--textBoxBackColor), black 35%);
+    --mathTextBoxText: color-mix(in srgb, var(--textBoxTextColor), white 35%);
+    --mathPlaceholderText: color-mix(in srgb, var(--textBoxTextColor), black 55%);
+    --editorButtonBorderColor: var(--sortableBorder);
+}
+
+.theme-1 {
+    --mathTextBoxBackground: color-mix(in srgb, var(--textBoxBackColor), black 15%);
+    --mathTextBoxText: color-mix(in srgb, var(--textBoxTextColor), black 5%);
+    --editorButtonBorderColor: color-mix(in srgb, var(--sortableBorder), darkblue 95%);
+
+}
+
+.theme-3 {
+    --mathTextBoxBackground: color-mix(in srgb, var(--textBoxBackColor), black 35%);
+    --mathTextBoxText: color-mix(in srgb, var(--textBoxTextColor), white 35%);
+    --mathPlaceholderText: color-mix(in srgb, var(--textBoxTextColor), black 15%);
+    --editorButtonBorderColor: color-mix(in srgb, var(--sortableBorder), white 35%);
+}
+
+.theme-4 {
+    --mathTextBoxBackground: color-mix(in srgb, var(--textBoxBackColor), black 15%);
+    --mathTextBoxText: color-mix(in srgb, var(--textBoxTextColor), black 5%);
+    --editorButtonBorderColor: color-mix(in srgb, var(--sortableBorder), white 35%);
+
+}
+
+.theme-5 {
+    --mathTextBoxBackground: color-mix(in srgb, var(--textBoxBackColor), black 35%);
+    --mathTextBoxText: color-mix(in srgb, var(--textBoxTextColor), white 35%);
+    --mathPlaceholderText: color-mix(in srgb, var(--textBoxTextColor), black 15%);
+}
+
+.theme-6 {
+    --mathTextBoxBackground: color-mix(in srgb, var(--textBoxBackColor), black 10%);
+    --mathTextBoxText: color-mix(in srgb, var(--textBoxTextColor), white 5%);
+}
+
+.theme-7 {
+    --mathTextBoxBackground: color-mix(in srgb, var(--textBoxBackColor), black 25%);
+    --mathTextBoxText: color-mix(in srgb, var(--textBoxTextColor), white 35%);
+    --mathPlaceholderText: color-mix(in srgb, var(--textBoxTextColor), black 15%);
+    --editorButtonBorderColor: color-mix(in srgb, var(--sortableBorder), lightblue 35%);
+}
+
+.theme-8 {
+    --mathTextBoxBackground: color-mix(in srgb, var(--textBoxBackColor), black 15%);
+    --mathTextBoxText: color-mix(in srgb, var(--textBoxTextColor), black 15%);
+}
+
+.math-editor-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    color: var(--textBoxTextColor);
+}
+
+/* Label above the editor */
+.math-editor-label {
+    color: var(--textBoxLabelColor);
+    font-size: 0.9rem;
+}
+
+/* Text editor container (TipTap) */
+.math-editor-textarea {
+
+    border: 2px solid var(--textBoxBorderColor);
+    background: var(--textBoxBackColor, var(--textBoxBackColorGradient));
+    color: var(--textBoxTextColor);
+    border-radius: 4px;
+    padding: 0.5rem;
+    min-height: 4rem;
+}
+
+/* TipTap content */
+.math-editor-textarea .ProseMirror {
+    outline: none;
+    min-height: 3rem;
+    white-space: pre-wrap;
+}
+
+/* Focus state */
+.math-editor-textarea:focus-within {
+    border-color: var(--textBoxBorderColorSelected);
+    box-shadow: 0 0 0 0.2rem var(--textBoxShadowColorRgba);
+}
+
+/* Math editor container */
+.math-editor-math-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+/* Small label for math area */
+.math-editor-math-label {
+    color: var(--textBoxLabelColor);
+    font-size: 0.8rem;
+}
+
+/* Wrapper around MathLive field */
+.math-editor-mathfield-wrapper {
+    border: 1px solid var(--textBoxBorderColor);
+    background: var(--textBoxBackColor);
+    border-radius: 4px;
+    padding: 0.25rem 0.5rem;
+}
+
+/* Focus state for math field */
+.math-editor-mathfield-wrapper:focus-within {
+    border-color: var(--textBoxBorderColorSelected);
+}
+
+/* MathLive field itself */
+.math-editor-mathfield {
+    width: 100%;
+    color: var(--textBoxTextColor);
+}
+
+.math-editor-mathfield {
+    font-size: 1.3rem;
+    /* or any size you want */
+}
+
+math-field[data-inline-math] {
+    font-size: 1.3rem;
+    color: var(--mathTextBoxText);
+    background-color: var(--mathTextBoxBackground);
+    --contains-highlight-background-color: var(--mathTextBoxBackground);
+}
+
+math-field[data-inline-math]::part(placeholder) {
+    color: var(--mathPlaceholderText);
+    opacity: 0.6;
+    font-style: italic;
+}
+
+@media (max-width: 600px) {
+    math-field[data-inline-math="true"] {
+        padding-left: 7px !important;
+        min-width: 60px !important;
+    }
+}
+
+
+
+math-field::part(menu-item-set-color) {
+    display: none;
+}
+
+math-field::part(menu-command-set-color) {
+    display: none;
+}
+
+math-field::part(menu-item)[data-command="set-color"] {
+    display: none;
+}
+
+
+
+
+
+/* math-field::part(container) {
+    color: var(--mathTextBoxText) !important;
+    background-color: var(--mathTextBoxBackground) !important;
+}
+
+math-field::part(math) {
+    color: var(--mathTextBoxText) !important;
+    background-color: var(--mathTextBoxBackground) !important;
+}
+
+math-field::part(group) {
+    color: var(--mathTextBoxText) !important;
+    background-color: var(--mathTextBoxBackground) !important;
+}
+
+math-field span {
+  color: var(--mathTextBoxText);
+    background-color: var(--mathTextBoxBackground) !important;
+} */
+
+math-field {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.text-editor-toolbar-wrapper {
+    width: 100%;
+    flex-shrink: 0;
+}
+
+.text-editor-toolbar {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 4px;
+    margin-bottom: 8px;
+    flex-shrink: 0;
+}
+
+
+.text-editor-toolbar button {
+    min-width: 31px;
+    min-height: 31px;
+    background-color: var(--buttonBackgroundColor);
+    color: var(--buttonTextColor);
+    border: 1px solid var(--editorButtonBorderColor);
+    padding: 4px 4px;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.text-editor-biu {
+    height: 31px;
+}
+
+.text-editor-bold {
+
+    font-size: 14px;
+}
+
+.text-editor-italic {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 14px;
+}
+
+.text-editor-underline {
+
+    font-size: 14px;
+}
+
+
+
+.text-editor-toolbar button:hover {
+    background-color: var(--buttonHoverBackgroundColor);
+
+}
+
+.text-editor-toolbar button:active {
+    background-color: var(--buttonActiveColor);
+}
+
+.text-editor-toolbar button strong,
+.text-editor-toolbar button em,
+.text-editor-toolbar button u {
+    pointer-events: none;
+}
+
+.text-editor-biu.active {
+    background-color: var(--buttonActiveBackground);
+    border: 3px solid var(--buttonActiveBorder);
+    color: var(--buttonActiveText);
+}
+
+.text-editor-biu.active div {}
+
+.text-editor-text-block {
+    padding: 4px 8px;
+    border: 1px solid transparent;
+    background: var(--buttonBackground);
+    color: var(--buttonText);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.text-editor-text-block:hover {
+    background: var(--buttonHoverBackground);
+}
+
+.text-editor-text-block.active {
+    background: var(--buttonActiveBackground);
+    border-color: var(--buttonActiveBorder);
+    color: var(--buttonActiveText);
+}
+
+.tiptap.is-editor-empty::before {
+    content: attr(data-placeholder);
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 0;
+    font-style: normal;
+}
+
+.tiptap {
+    position: relative;
+}

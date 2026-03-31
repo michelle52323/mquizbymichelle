@@ -1,0 +1,136 @@
+.edit-page-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 52px;
+    padding: 0 16px;
+    background: #f8f8f8;
+    border-bottom: 1px solid #ddd;
+    box-sizing: border-box;
+}
+
+/* Each section (left, center, right) */
+.toolbar-section {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    /* spacing between buttons */
+}
+
+/* Extra spacing between the three zones */
+.toolbar-left {
+    margin-right: 24px;
+}
+
+.toolbar-center {
+    margin: 0 24px;
+}
+
+.toolbar-right {
+    margin-left: 24px;
+}
+
+/* Spacer for the empty slot in published mode */
+.toolbar-spacer {
+    width: 80px;
+    /* keeps the 7-slot layout stable */
+}
+
+/* Button styling (light, calm, teacher-friendly) */
+.edit-page-toolbar button, .edit-page-toolbar-mobile button {
+  padding: 6px 14px;
+  color: var(--buttonTextColor);
+  background-image: linear-gradient(45deg, var(--buttonBackgroundColor), var(--buttonBackgroundColorGradient));
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+
+  /* NEW: two-line wrapping rules */
+  /* white-space: normal;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: visible;
+  word-break: keep-all; */
+
+}
+
+@media (max-width: 917px) {
+    .edit-page-toolbar button, .edit-page-toolbar-mobile button {
+        padding: 4px 10px;
+        font-size: 13px;
+    }
+}
+
+.edit-page-toolbar button:hover, .edit-page-toolbar-mobile button:hover {
+    color: var(--buttonHoverTextColor);
+    background-image: linear-gradient(45deg, var(--buttonHoverBackgroundColor), var(--buttonHoverBackgroundColorGradient));
+}
+
+.edit-page-toolbar button:disabled, .edit-page-toolbar-mobile button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Mobile specific styles */
+
+.edit-page-toolbar-mobile{
+    height: 120px;
+    padding: 2px 16px;
+    background: #f8f8f8;
+    border-bottom: 1px solid #ddd;
+    box-sizing: border-box;
+}
+
+/* Base row layout */
+.toolbar-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 5px 0;
+}
+
+.toolbar-btn {
+    white-space: nowrap;
+}
+
+/* Children share space by default */
+.toolbar-row .toolbar-btn,
+.toolbar-row .toolbar-spacer-flex {
+    flex: 1;
+}
+
+/* Spacer is invisible but holds a column */
+.toolbar-spacer-flex {
+    visibility: hidden; /* or keep visible if you want */
+}
+
+/* Make first button on row 3 wider (~1.3x) */
+.toolbar-row-actions .toolbar-btn-wide {
+    flex: 1.2;
+    white-space: nowrap; /* keep text on one line */
+}
+
+/* Let other buttons be normal */
+.toolbar-row-actions .toolbar-btn {
+    flex: 1;
+}
+
+/* Make Publish narrower */
+.toolbar-btn-publish {
+    flex: 0.7;        /* narrower than normal buttons */
+    white-space: nowrap;
+}
+
+.toolbar-btn-save {
+    flex: 0.7;        /* narrower than normal buttons */
+    white-space: nowrap;
+}
+
+.toolbar-row-save{
+    /* padding-top:5px; */
+}
+
+

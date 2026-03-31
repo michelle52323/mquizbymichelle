@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="currentColor">
+  <rect
+    x="2.95"
+    y="1.921"
+    width="5.283"
+    height="1.466"
+    transform="matrix(-0.7071 -0.7071 0.7071 -0.7071 7.6689 8.4842)"
+  />
+  <rect
+    x="0.024"
+    y="3.157"
+    width="6.375"
+    height="1.683"
+  />
+  <rect
+    x="2.956"
+    y="4.615"
+    width="5.284"
+    height="1.465"
+    transform="matrix(-0.7069 0.7073 -0.7073 -0.7069 13.3369 5.1684)"
+  />
+</svg>

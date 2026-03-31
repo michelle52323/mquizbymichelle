@@ -1,0 +1,72 @@
+﻿:root {
+
+
+
+
+    --radioHoverBackgroundColor: color-mix(in srgb, var(--radioHoverColor), white 30%);
+}
+.answer-choice-radio {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+/* hide the native radio */
+.answer-choice-radio input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* the custom circle */
+.answer-choice-radio .circle {
+    margin-left: 60px;
+    height: 20px;
+    width: 20px;
+    border: 2px solid var(--radioCheckColor);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.2s ease;
+}
+
+/* the inner dot (hidden by default) */
+.answer-choice-radio .circle::before {
+    content: "";
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    background: transparent;
+    transition: background 0.2s ease;
+}
+
+/* hover effect */
+/* .answer-choice-radio:hover .circle {
+    border-color: var(--radioHoverColor);
+    background-color: var(--radioHoverBackgroundColor);
+} */
+
+.answer-choice-radio .circle:hover {
+    border-color: var(--radioHoverColor);
+    background-color: var(--radioHoverBackgroundColor);
+}
+
+/* checked state */
+.answer-choice-radio input[type="radio"]:checked + .circle {
+    border-color: var(--radioCheckColor);
+}
+
+.answer-choice-radio input[type="radio"]:checked + .circle::before {
+    background: var(--radioCheckColor);
+}
+
+.answer-choice-margin-neutralizer{
+    margin-left: -60px;
+}
+
+.selected-answer-choice-margin-neutralizer{
+    margin-left: -1px;
+    margin-bottom: 1px;
+}

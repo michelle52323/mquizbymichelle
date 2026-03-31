@@ -1,0 +1,18 @@
+<svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+    <title>namur-failure-filled</title>
+
+    <!-- Define the Symbol -->
+    <symbol id="failure-icon" viewBox="0 0 512 512">
+        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g fill="#9C2F2E" transform="translate(64.000000, 64.000000)"> <!-- Muted red for outer shape -->
+                <path d="M192,0 C298.038672,0 384,85.961328 384,192 C384,298.038672 298.038672,384 192,384 C85.961328,384 0,298.038672 0,192 C0,85.961328 85.961328,0 192,0 Z"/>
+            </g>
+            <g fill="#D4D4D4" transform="translate(64.000000, 64.000000)"> <!-- Deep red for X mark -->
+                <path d="M273.018158,80.8239578 L192.012,161.83 L111.156702,80.9748073 L80.9868126,111.144697 L161.842,192 L80.9868126,272.855303 L111.156702,303.025193 L192.012,222.17 L273.018158,303.176042 L303.188047,273.006153 L222.182,192 L303.188047,110.993847 L273.018158,80.8239578 Z"/>
+            </g>
+        </g>
+    </symbol>
+
+    <!-- Use the Symbol -->
+    <use href="#failure-icon" x="0" y="0" width="512" height="512"/>
+</svg>

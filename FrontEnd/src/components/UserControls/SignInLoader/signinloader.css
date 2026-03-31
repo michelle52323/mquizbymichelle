@@ -1,0 +1,39 @@
+.signin-loader-container {
+    height: 284px;
+    background-image: linear-gradient(45deg, var(--contentBackColor), var(--contentBackColorGradient));
+    min-width: 380px;
+    width: 380px;
+}
+
+.signin-loader-content {
+    padding: 20px;
+
+    opacity: 0;
+    animation: fadeIn 0.2s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(4px); /* optional subtle lift */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+.spinner-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.signin-loader-message{
+    font-size: 15px;
+    text-align:center;
+}
