@@ -17,6 +17,8 @@ namespace PlatformAPI.Models.StudentQuizzes
 
         public bool IsActive { get; set; }
 
+        public bool IsInstructor { get; set; }
+
         // Navigation
         public ICollection<StudentQuizAttempt> Attempts { get; set; }
     }

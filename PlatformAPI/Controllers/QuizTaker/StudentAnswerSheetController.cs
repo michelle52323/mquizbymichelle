@@ -52,7 +52,9 @@ namespace PlatformAPI.Controllers.QuizTaker
         private async Task<StudentQuizAssignment> GetAssignmentAsync(int userId, int quizId)
         {
             var assignment = await _context.StudentQuizAssignments
-                .FirstOrDefaultAsync(a => a.UserId == userId && a.QuizId == quizId);
+                .FirstOrDefaultAsync(a => a.UserId == userId 
+                                    && a.QuizId == quizId
+                                    && a.IsActive == true);
 
             if (assignment != null)
                 return assignment;
@@ -90,6 +92,7 @@ namespace PlatformAPI.Controllers.QuizTaker
                 StudentQuizAssignmentId = assignment.Id,
                 DateTaken = DateTime.UtcNow,
                 IsCompleted = false,
+                Score = null,
                 IsActive = true
             };
 
@@ -129,6 +132,7 @@ namespace PlatformAPI.Controllers.QuizTaker
                     AttemptId = attempt.Id,
                     DateTaken = attempt.DateTaken,
                     IsCompleted = attempt.IsCompleted,
+                    Score = attempt.Score,
                     IsActive = attempt.IsActive,
 
                     Answers = answers.Select(a => new StudentAnswerSheetAnswerDTO

@@ -13,6 +13,8 @@ namespace PlatformAPI.Models.StudentQuizzes
 
         public bool IsCompleted { get; set; }
 
+        public int? Score { get; set; }      //Number of correct answers
+
         public bool IsActive { get; set; }
 
         // Navigation

@@ -51,6 +51,12 @@ export function isMobileTouchDevice() {
     return isIOS || isAndroid;
 }
 
+export function isIOS() {
+    const ua = navigator.userAgent || navigator.vendor || window.opera;
+    return /iPhone|iPad|iPod/i.test(ua);
+}
+
+
 
 export function isProdMode() {
   return import.meta.env.VITE_MODE === 'prod';

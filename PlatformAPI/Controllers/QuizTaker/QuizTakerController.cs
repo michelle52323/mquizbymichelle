@@ -74,7 +74,8 @@ namespace PlatformAPI.Controllers.QuizTaker
                     {
                         Id = ac.Id,
                         Description = ac.Description,
-                        SortOrder = ac.SortOrder
+                        SortOrder = ac.SortOrder,
+                        IsCorrect = ac.IsCorrect
                     });
                 }
 
@@ -120,6 +121,27 @@ namespace PlatformAPI.Controllers.QuizTaker
 
             return answerChoices;
         }
+
+        [HttpPost("complete-attempt")]
+        public async Task<IActionResult> CompleteAttempt([FromBody] CompleteAttemptDto dto)
+        {
+            // Load the attempt
+            var attempt = await _context.StudentQuizAttempts
+                .FirstOrDefaultAsync(a => a.Id == dto.Id);
+
+            if (attempt == null)
+                return NotFound("Attempt not found");
+
+            // Update fields
+            attempt.IsCompleted = true;
+            attempt.Score = dto.Score;
+
+            // Save
+            await _context.SaveChangesAsync();
+
+            return Ok(new { message = "Attempt marked complete", attemptId = attempt.Id });
+        }
+
 
     }
 }

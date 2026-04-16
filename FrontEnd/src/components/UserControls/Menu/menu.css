@@ -17,6 +17,22 @@
     overflow-y: auto;
 }
 
+/* Begin Sub Menu Classes */
+
+.menu-background {
+    background-image: linear-gradient(45deg, var(--dropdownContentBackgroundColor), var(--dropdownContentBackgroundColorGradient));
+}
+
+.menu-header {
+    color: var(--dropdownContentTextColor) !important;
+}
+
+.menu-divider{
+    color: var(--dropdownContentTextColor) !important;
+}
+
+/* End Sub Menu Classes */
+
 .menu-open {
     left: 0px;
 }

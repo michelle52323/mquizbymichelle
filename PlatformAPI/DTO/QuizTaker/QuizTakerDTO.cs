@@ -31,5 +31,14 @@
         public int Id { get; set; }
         public string Description { get; set; }
         public int SortOrder { get; set; }
+
+        public bool IsCorrect { get; set; }
     }
+
+    public class CompleteAttemptDto
+    {
+        public int Id { get; set; }      // Attempt Id
+        public int Score { get; set; }   // Final score
+    }
+
 }

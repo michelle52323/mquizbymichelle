@@ -18,6 +18,7 @@
         public DateTime DateTaken { get; set; }
         public bool IsCompleted { get; set; }
         public bool IsActive { get; set; }
+        public int? Score { get; set; }      //Number of correct answers
 
         public List<StudentAnswerSheetAnswerDTO> Answers { get; set; }
     }

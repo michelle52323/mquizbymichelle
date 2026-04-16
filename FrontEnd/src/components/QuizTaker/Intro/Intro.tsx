@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useOutletContext, useParams, useNavigate, useLocation } from 'react-router-dom';
 import type { LayoutContext } from '../../Layout';
-import CheckAuth from '../../../components/Account/checkAuth';
-import { getApiBaseUrl } from '../../../helpers/config';
 import ButtonGrid from '../../../components/UserControls/ButtonGrid/ButtonGrid';
 import { useQuiz } from "../../QuizTaker/QuizProvider/QuizProvider";
 
@@ -23,6 +21,7 @@ export default function Intro() {
 
     const {
         quiz,
+        answerSheet,
         firstQuestionId
     } = useQuiz();
 
@@ -32,13 +31,6 @@ export default function Intro() {
     const [auth, setAuth] = useState(null);
 
     const { quizId } = useParams<{ quizId: string }>();
-
-    // const [quiz, setQuiz] = useState<QuizInfo>({
-    //     name: '',
-    //     description: '',
-    //     subjectId: '',
-    //     subjectName: '',
-    // });
 
     useEffect(() => {
         if (quiz) {
@@ -55,73 +47,23 @@ export default function Intro() {
         };
     }, []);
 
-    // useEffect(() => {
-    //     async function hydrateAuth() {
-    //         const result = await CheckAuth();
-    //         setAuth(result);
-    //     }
-    //     hydrateAuth();
-    // }, []);
+    useEffect(() => {
 
-    // useEffect(() => {
-    //     if (auth === null) return;
+        if (answerSheet.attempt.isCompleted)
+            navigate(`/quiz/${quiz.id}/score`, { replace: true });
 
-    //     if (!auth.auth) {
-    //         navigate("/signin");
-    //         return;
-    //     }
+    }, [answerSheet]);
 
-    //     const role =
-    //         auth.claims["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
-
-    //     if (role !== "Instructor" && role !== "Student") {
-    //         navigate("/dashboard");
-    //         return;
-    //     }
-
-    //     // allowed roles fall through here
-    // }, [auth, navigate, setTitle]);
-
-    // useEffect(() => {
-    //     if (!quizId || !auth?.claims?.UserId) return;
-
-    //     fetch(`${API_BASE}/api/QuizInfo/${quizId}`, { credentials: 'include' })
-    //         .then(res => res.ok ? res.json() : Promise.reject('Quiz not found'))
-    //         .then(data => {
-    //             if (data.userId !== auth.claims?.UserId) {
-    //                 console.warn('Unauthorized access attempt');
-    //                 navigate('/dashboard');
-    //                 return;
-    //             }
-
-    //             const hydratedQuiz: QuizInfo = {
-    //                 name: data.name,
-    //                 description: data.description,
-    //                 subjectId: data.subjectId?.toString() || '',
-    //                 subjectName: data.subjectName?.toString() || '',
-    //             };
-
-    //             setQuiz(hydratedQuiz);
-    //             setTitle(data.name);
-
-    //         })
-    //         .catch(err => {
-    //             console.error(err);
-    //             navigate('/dashboard');
-    //         });
-    // }, [quizId, auth?.claims?.UserId, navigate]);
 
     const handleGoBack = () => {
-        // TODO: navigate back to previous page
+        //** NEED TO MODIFY SO STUDENT VERSION GOES BACK TO MY QUIZZES STUDENT **/
+        navigate("/quizbuilder/myquizzes");
     };
 
     const handleStartQuiz = () => {
         navigate("/quiz/" + quiz.id + "/questions/" + firstQuestionId);
     };
 
-
-    // if (auth === null) return <div>Loading dashboard...</div>;
-    // if (!auth.auth) return null;
 
     return (
         <>

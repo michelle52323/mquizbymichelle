@@ -11,6 +11,24 @@ namespace PlatformAPI.Controllers.QuizBuilder
 
 {
 
+    public class QuizListDto
+    {
+        public int Id { get; set; }
+        public int SubjectId { get; set; }
+        public object Subject { get; set; }   // or SubjectDto if you have one
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public int SortOrder { get; set; }
+        public bool IsActive { get; set; }
+        public bool IsPublished { get; set; }
+        public int CreatedByUserId { get; set; }
+        public DateTime DateCreated { get; set; }
+
+        // ⭐ New field
+        public bool CanTake { get; set; }
+    }
+
+
     [ApiController]
     [Route("api/[controller]")]
     public class MyQuizzesController : ControllerBase
@@ -29,6 +47,34 @@ namespace PlatformAPI.Controllers.QuizBuilder
             _logger = logger;
         }
 
+        //[HttpGet("getQuizzes")]
+        //[Authorize]
+        //public async Task<IActionResult> GetQuizzesByAuthenticatedUser()
+        //{
+        //    var userId = int.Parse(User.FindFirst("UserId").Value);
+
+        //    var quizzes = await _context.Quizzes
+        //        .Include(q => q.UserQuiz)
+        //        .Include(q => q.Subject)
+        //        .Where(q => q.IsActive && q.UserQuiz.UserId == userId)
+        //        .OrderBy (q => q.SortOrder)
+        //        .Select(q => new {
+        //            q.Id,
+        //            q.SubjectId,
+        //            q.Subject,
+        //            q.Name,
+        //            q.Description,
+        //            q.SortOrder,
+        //            q.IsActive,
+        //            q.IsPublished,
+        //            q.CreatedByUserId,
+        //            q.DateCreated
+        //        })
+        //        .ToListAsync();
+
+        //    return Ok(quizzes);
+        //}
+
         [HttpGet("getQuizzes")]
         [Authorize]
         public async Task<IActionResult> GetQuizzesByAuthenticatedUser()
@@ -36,26 +82,38 @@ namespace PlatformAPI.Controllers.QuizBuilder
             var userId = int.Parse(User.FindFirst("UserId").Value);
 
             var quizzes = await _context.Quizzes
-                .Include(q => q.UserQuiz)
-                .Include(q => q.Subject)
                 .Where(q => q.IsActive && q.UserQuiz.UserId == userId)
-                .OrderBy (q => q.SortOrder)
-                .Select(q => new {
-                    q.Id,
-                    q.SubjectId,
-                    q.Subject,
-                    q.Name,
-                    q.Description,
-                    q.SortOrder,
-                    q.IsActive,
-                    q.IsPublished,
-                    q.CreatedByUserId,
-                    q.DateCreated
+                .OrderBy(q => q.SortOrder)
+                .GroupJoin(
+                    _context.StudentQuizAssignments.Where(a => a.UserId == userId && a.IsActive),
+                    q => q.Id,
+                    a => a.QuizId,
+                    (q, assignments) => new { q, assignment = assignments.FirstOrDefault() }
+                )
+                .Select(x => new QuizListDto
+                {
+                    Id = x.q.Id,
+                    SubjectId = x.q.SubjectId,
+                    Subject = x.q.Subject,
+                    Name = x.q.Name,
+                    Description = x.q.Description,
+                    SortOrder = x.q.SortOrder,
+                    IsActive = x.q.IsActive,
+                    IsPublished = x.q.IsPublished,
+                    CreatedByUserId = x.q.CreatedByUserId,
+                    DateCreated = x.q.DateCreated,
+
+                    // ⭐ The new field
+                    CanTake = x.q.IsPublished
+                        && x.assignment != null
+                        && x.assignment.IsActive
                 })
                 .ToListAsync();
 
             return Ok(quizzes);
         }
+
+
 
         [HttpGet("getQuizzesMock")]
         public async Task<IActionResult> GetQuizzesByMockUser()
@@ -63,21 +121,31 @@ namespace PlatformAPI.Controllers.QuizBuilder
             var userId = 1;
 
             var quizzes = await _context.Quizzes
-                .Include(q => q.UserQuiz)
-                .Include(q => q.Subject)
                 .Where(q => q.IsActive && q.UserQuiz.UserId == userId)
                 .OrderBy(q => q.SortOrder)
-                .Select(q => new {
-                    q.Id,
-                    q.SubjectId,
-                    q.Subject,
-                    q.Name,
-                    q.Description,
-                    q.SortOrder,
-                    q.IsActive,
-                    q.IsPublished,
-                    q.CreatedByUserId,
-                    q.DateCreated
+                .GroupJoin(
+                    _context.StudentQuizAssignments.Where(a => a.UserId == userId && a.IsActive),
+                    q => q.Id,
+                    a => a.QuizId,
+                    (q, assignments) => new { q, assignment = assignments.FirstOrDefault() }
+                )
+                .Select(x => new QuizListDto
+                {
+                    Id = x.q.Id,
+                    SubjectId = x.q.SubjectId,
+                    Subject = x.q.Subject,
+                    Name = x.q.Name,
+                    Description = x.q.Description,
+                    SortOrder = x.q.SortOrder,
+                    IsActive = x.q.IsActive,
+                    IsPublished = x.q.IsPublished,
+                    CreatedByUserId = x.q.CreatedByUserId,
+                    DateCreated = x.q.DateCreated,
+
+                    // ⭐ The new field
+                    CanTake = x.q.IsPublished
+                        && x.assignment != null
+                        && x.assignment.IsActive
                 })
                 .ToListAsync();
 
@@ -149,6 +217,7 @@ namespace PlatformAPI.Controllers.QuizBuilder
             }
             
         }
+
 
     }
 

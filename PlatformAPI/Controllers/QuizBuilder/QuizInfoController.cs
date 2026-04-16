@@ -5,6 +5,7 @@ using PlatformAPI.Models.Quizzes;
 using System.Security.Claims;
 using PlatformAPI.Models.Users;
 using Microsoft.Data.SqlClient;
+using PlatformAPI.Models.StudentQuizzes;
 
 namespace PlatformAPI.Controllers.QuizBuilder
 {
@@ -162,6 +163,25 @@ namespace PlatformAPI.Controllers.QuizBuilder
         }
 
 
+        //[HttpPost("publish/{quizId}")]
+        //public async Task<IActionResult> PublishQuiz(int quizId)
+        //{
+        //    var quiz = await _context.Quizzes.FindAsync(quizId);
+        //    if (quiz == null)
+        //        return BadRequest("Quiz not found.");
+
+        //    quiz.IsPublished = true;
+
+        //    try
+        //    {
+        //        await _context.SaveChangesAsync();
+        //        return Ok();
+        //    }
+        //    catch
+        //    {
+        //        return BadRequest("Unable to publish quiz.");
+        //    }
+        //}
         [HttpPost("publish/{quizId}")]
         public async Task<IActionResult> PublishQuiz(int quizId)
         {
@@ -170,6 +190,33 @@ namespace PlatformAPI.Controllers.QuizBuilder
                 return BadRequest("Quiz not found.");
 
             quiz.IsPublished = true;
+
+            // Extract instructor UserId
+            var instructorUserId = quiz.CreatedByUserId;
+
+            // Check if an instructor assignment already exists
+            var existingAssignment = await _context.StudentQuizAssignments
+                .FirstOrDefaultAsync(a =>
+                    a.UserId == instructorUserId &&
+                    a.QuizId == quizId &&
+                    a.IsInstructor == true &&
+                    a.IsActive == true);
+
+            // If none exists, create one
+            if (existingAssignment == null)
+            {
+                var assignment = new StudentQuizAssignment
+                {
+                    UserId = instructorUserId,
+                    QuizId = quizId,
+                    AllowMultipleAttempts = false,
+                    IsInstructor = true,
+                    IsActive = true,
+                    MostRecentAttemptId = null
+                };
+
+                _context.StudentQuizAssignments.Add(assignment);
+            }
 
             try
             {
@@ -181,6 +228,7 @@ namespace PlatformAPI.Controllers.QuizBuilder
                 return BadRequest("Unable to publish quiz.");
             }
         }
+
 
 
     }

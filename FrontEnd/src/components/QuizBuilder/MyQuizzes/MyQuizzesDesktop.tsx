@@ -35,6 +35,7 @@ interface Quiz {
         id: number;
         description: string;
     };
+    canTake: boolean;
 }
 
 const MyQuizzesDesktop: React.FC = () => {
@@ -143,6 +144,9 @@ const MyQuizzesDesktop: React.FC = () => {
         setModalIsOpen(false);
     };
 
+    
+
+
     return (
 
         <div className="page-container w-100 pt-3">
@@ -162,13 +166,14 @@ const MyQuizzesDesktop: React.FC = () => {
 
                                 <div className="flex-grow-1">
                                     <div className="row">
-                                        <div className="col-4 col-custom-12 fw-bold">Name</div>
-                                        <div className="col-4 col-responsive fw-bold">Description</div>
-                                        <div className="col-4 col-responsive fw-bold">Subject</div>
+                                        <div className="col-4 col-custom-4-6-12 fw-bold">Name</div>
+                                        <div className="col-4 col-custom-4-0 fw-bold">Description</div>
+                                        <div className="col-4 col-custom-4-6-0 fw-bold">Subject</div>
                                     </div>
                                 </div>
 
                                 <div className="d-flex ms-3">
+                                    <div className="fixed-button"></div>
                                     <div className="fixed-button-icon"></div>
                                     <div className="fixed-button"></div>
                                     <div className="fixed-button-icon"></div>
@@ -179,7 +184,7 @@ const MyQuizzesDesktop: React.FC = () => {
                             {/* Rows */}
                             <div className="grid-overflow-box gof-tall" id="sortable">
                                 {quizzes.map((quiz, i) => (
-                                    <SortableQuizItem key={quiz.id} quiz={quiz} index={i} openDeleteModal={() => openDeleteModal(quiz)} />
+                                    <SortableQuizItem key={quiz.id} quiz={quiz} index={i} isMobile={false} openDeleteModal={() => openDeleteModal(quiz)} />
                                 ))}
                             </div>
                         </SortableContext>

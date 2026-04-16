@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useOutletContext, useParams, useNavigate, useLocation } from 'react-router-dom';
 import type { LayoutContext } from '../../Layout';
-import CheckAuth from '../../../components/Account/checkAuth';
 import { getApiBaseUrl } from '../../../helpers/config';
 import ButtonGrid from '../../../components/UserControls/ButtonGrid/ButtonGrid';
 import { useQuiz } from "../../QuizTaker/QuizProvider/QuizProvider";
@@ -29,7 +28,7 @@ export default function Questions() {
 
     const navigate = useNavigate();
     const { setTitle, setBanner } = useOutletContext<LayoutContext>();
-    const [auth, setAuth] = useState(null);
+    //const [auth, setAuth] = useState(null);
 
     const { questionId } = useParams<{ questionId: string }>();
 
@@ -60,6 +59,13 @@ export default function Questions() {
 
         };
     }, []);
+
+    useEffect(() => {
+
+        if (answerSheet.attempt.isCompleted)
+            navigate(`/quiz/${quiz.id}/score`, { replace: true });
+
+    }, [answerSheet]);
 
 
 
@@ -269,7 +275,7 @@ export default function Questions() {
     };
 
 
-
+if (!answerSheet.attempt.isCompleted)
     return (
         <>
             <form id="page-form">
@@ -379,5 +385,7 @@ export default function Questions() {
 
         </>
     );
+else
+    return(<></>);
 
 }

@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
 using System;
+using PlatformAPI.Models.StudentQuizzes;
 
 namespace PlatformAPI.Controllers.QuizBuilder
 {
@@ -64,16 +65,19 @@ namespace PlatformAPI.Controllers.QuizBuilder
             // 2. Insert UserQuiz
             await InsertUserQuiz(newUserId, newQuiz.Id);
 
-            // 3. Clone Questions (returns mapping)
+            // 3.  Insert StudentQuizAssignment
+            await CreateStudentQuizAssignment(newUserId, newQuiz.Id);
+
+            // 4. Clone Questions (returns mapping)
             var questionMap = await CloneQuestions(originalQuiz.Id);
 
-            // 4. Clone QuizQuestion using mapping
+            // 5. Clone QuizQuestion using mapping
             await CloneQuizQuestions(originalQuiz.Id, newQuiz.Id, questionMap);
 
-            // 5. Clone AnswerChoices (returns mapping)
+            // 6. Clone AnswerChoices (returns mapping)
             var answerChoiceMap = await CloneAnswerChoices(questionMap);
 
-            // 6. Clone QuestionAnswer using both mappings
+            // 7. Clone QuestionAnswer using both mappings
             await CloneQuestionAnswers(questionMap, answerChoiceMap);
         }
 
@@ -124,10 +128,29 @@ namespace PlatformAPI.Controllers.QuizBuilder
             await _context.SaveChangesAsync();
         }
 
+        // ---------------------------------------------------------
+        // 3.  Create StudentQuizAssignment for each quiz
+        // ---------------------------------------------------------
+        private async Task CreateStudentQuizAssignment(int newUserId, int newQuizId)
+        {
+            var assignment = new StudentQuizAssignment
+            {
+                UserId = newUserId,
+                QuizId = newQuizId,
+                AllowMultipleAttempts = false,
+                IsInstructor = true,
+                IsActive = true,
+                MostRecentAttemptId = null
+            };
+
+            _context.StudentQuizAssignments.Add(assignment);
+            await _context.SaveChangesAsync();
+        }
+
 
 
         // ---------------------------------------------------------
-        // 3. Clone Questions
+        // 4. Clone Questions
         // returns Dictionary<oldQuestionId, newQuestionId>
         // ---------------------------------------------------------
         private async Task<Dictionary<int, int>> CloneQuestions(int originalQuizId)
@@ -169,7 +192,7 @@ namespace PlatformAPI.Controllers.QuizBuilder
 
 
         // ---------------------------------------------------------
-        // 4. Clone QuizQuestion
+        // 5. Clone QuizQuestion
         // ---------------------------------------------------------
         private async Task CloneQuizQuestions(
         int originalQuizId,
@@ -201,7 +224,7 @@ namespace PlatformAPI.Controllers.QuizBuilder
 
 
         // ---------------------------------------------------------
-        // 5. Clone AnswerChoices
+        // 6. Clone AnswerChoices
         // returns Dictionary<oldAnswerChoiceId, newAnswerChoiceId>
         // ---------------------------------------------------------
         private async Task<Dictionary<int, int>> CloneAnswerChoices(Dictionary<int, int> questionMap)
@@ -245,7 +268,7 @@ namespace PlatformAPI.Controllers.QuizBuilder
 
 
         // ---------------------------------------------------------
-        // 6. Clone QuestionAnswer
+        // 7. Clone QuestionAnswer
         // ---------------------------------------------------------
         private async Task CloneQuestionAnswers(
         Dictionary<int, int> questionMap,
@@ -277,8 +300,6 @@ namespace PlatformAPI.Controllers.QuizBuilder
 
             await _context.SaveChangesAsync();
         }
-
-
 
         #endregion
         // =====================================================================

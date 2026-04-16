@@ -101,7 +101,7 @@ export default function QuizProvider({ children }: { children: ReactNode }) {
         const fetchQuiz = async () => {
             try {
                 const response = await fetch(
-                    `${getApiBaseUrl()}/api/QuizTaker/${quizId}`,
+                    `${API_BASE}/api/QuizTaker/${quizId}`,
                     {
                         credentials: "include"
                     }
@@ -141,7 +141,7 @@ export default function QuizProvider({ children }: { children: ReactNode }) {
                     : null;
 
                 const response = await fetch(
-                    `${getApiBaseUrl()}/api/StudentAnswerSheet/load`,
+                    `${API_BASE}/api/StudentAnswerSheet/load`,
                     {
                         method: "POST",
                         headers: {
@@ -162,6 +162,10 @@ export default function QuizProvider({ children }: { children: ReactNode }) {
 
                 const data: StudentAnswerSheet = await response.json();
                 setAnswerSheet(data);
+                if (!data.attempt.isCompleted) {
+                    await new Promise(resolve => setTimeout(resolve, 500));
+                }
+
                 setAnswerSheetIsLoaded(true);
 
                 //console.log("Quiz type: " + JSON.stringify(answerSheet));

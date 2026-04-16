@@ -711,6 +711,11 @@ a.button-tiny-ios {
     margin-left: 4px;
 }
 
+.button-icon-more-options{
+    padding-top:4px;
+    padding-left: 3px;
+}
+
 .static-large-button {
     width: 150px;
 }
@@ -1262,3 +1267,31 @@ a.button-tiny-ios {
         transform: rotate(360deg);
     }
 }
+
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(100%);
+    }
+}
+
+.mobile-bottom-sheet.opening {
+    animation: slideUp 0.25s ease-out forwards;
+}
+
+.mobile-bottom-sheet.closing {
+    animation: slideDown 0.15s ease-in forwards;
+}
+
+

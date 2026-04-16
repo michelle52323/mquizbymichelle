@@ -20,6 +20,7 @@ import chevronDownIcon from '../../../assets/icons/down-chevron-svgrepo-com.svg?
 import warningIcon from '../../../assets/icons/warning-svgrepo-com.svg?raw'
 import reviewIcon from '../../../assets/icons/review-screen-svgrepo-com.svg?raw'
 import answerSelectedIcon from '../../../assets/icons/answer-selected.svg?raw'
+import moreOptionsIcon from '../../../assets/icons/more-options.svg?raw'
 
 
 
@@ -43,7 +44,8 @@ const iconMap: Record<string, string> = {
   chevronDown: chevronDownIcon,
   warning: warningIcon,
   review: reviewIcon,
-  answerSelected: answerSelectedIcon
+  answerSelected: answerSelectedIcon,
+  moreOptions: moreOptionsIcon
 };
 
 const defaultClassMap: Partial<Record<keyof typeof iconMap, string>> = {
@@ -54,7 +56,8 @@ const defaultClassMap: Partial<Record<keyof typeof iconMap, string>> = {
   rightArrow: "button-icon-right-arrow",
   leftArrow: "button-icon-left-arrow",
   chevronUp: "button-icon-chevron-up",
-  review: "button-icon-review"
+  review: "button-icon-review",
+  moreOptions: "button-icon-more-options"
 };
 
 interface IconProps {
