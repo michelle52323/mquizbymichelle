@@ -20,6 +20,10 @@ jobs:
       - name: Build API
         run: dotnet build PlatformAPI/PlatformAPI.csproj --configuration Release
 
+	- name: Create Mock Settings
+        # This renames your test file to 'appsettings.json' so the API can find it
+        run: cp PlatformAPI/appsettings.Test.json PlatformAPI/appsettings.json
+
       - name: Run xUnit Tests
         # We point this specifically to the Tests folder
         run: dotnet test PlatformAPI.Tests/PlatformAPI.Tests.csproj --configuration Release --verbosity normal
