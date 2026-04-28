@@ -3,36 +3,32 @@
   "WorkspaceRootPath": "C:\\Users\\miche\\Documents\\Websites\\React.js\\Quiz-Builder\\PlatformAPI\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{58915EA0-E7E3-4E65-B414-60C5E6C182D6}|PlatformAPI.csproj|c:\\users\\miche\\documents\\websites\\react.js\\quiz-builder\\platformapi\\controllers\\quizbuilder\\quizclone.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{58915EA0-E7E3-4E65-B414-60C5E6C182D6}|PlatformAPI.csproj|solutionrelative:controllers\\quizbuilder\\quizclone.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{58915EA0-E7E3-4E65-B414-60C5E6C182D6}|PlatformAPI.csproj|c:\\users\\miche\\documents\\websites\\react.js\\quiz-builder\\platformapi\\controllers\\users\\signincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{58915EA0-E7E3-4E65-B414-60C5E6C182D6}|PlatformAPI.csproj|solutionrelative:controllers\\users\\signincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D3E0C7D-E269-4C1A-927B-45070A2D5067}|..\\PlatformAPI.Tests\\PlatformAPI.Tests.csproj|c:\\users\\miche\\documents\\websites\\react.js\\quiz-builder\\platformapi.tests\\quizzes\\quizinfotests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\miche\\Documents\\Websites\\NET_Core\\Recipes_Core\\Recipes_Core\\Pages\\SignIn.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D3E0C7D-E269-4C1A-927B-45070A2D5067}|..\\PlatformAPI.Tests\\PlatformAPI.Tests.csproj|c:\\users\\miche\\documents\\websites\\react.js\\quiz-builder\\platformapi.tests\\quizzes\\myquizzestests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{58915EA0-E7E3-4E65-B414-60C5E6C182D6}|PlatformAPI.csproj|c:\\users\\miche\\documents\\websites\\react.js\\quiz-builder\\platformapi\\controllers\\quizbuilder\\quizinfocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{58915EA0-E7E3-4E65-B414-60C5E6C182D6}|PlatformAPI.csproj|solutionrelative:controllers\\quizbuilder\\quizinfocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{58915EA0-E7E3-4E65-B414-60C5E6C182D6}|PlatformAPI.csproj|c:\\users\\miche\\documents\\websites\\react.js\\quiz-builder\\platformapi\\controllers\\quiztaker\\quiztakercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{58915EA0-E7E3-4E65-B414-60C5E6C182D6}|PlatformAPI.csproj|solutionrelative:controllers\\quiztaker\\quiztakercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{58915EA0-E7E3-4E65-B414-60C5E6C182D6}|PlatformAPI.csproj|c:\\users\\miche\\documents\\websites\\react.js\\quiz-builder\\platformapi\\dto\\quiztaker\\quiztakerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{58915EA0-E7E3-4E65-B414-60C5E6C182D6}|PlatformAPI.csproj|solutionrelative:dto\\quiztaker\\quiztakerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7D3E0C7D-E269-4C1A-927B-45070A2D5067}|..\\PlatformAPI.Tests\\PlatformAPI.Tests.csproj|c:\\users\\miche\\documents\\websites\\react.js\\quiz-builder\\platformapi.tests\\mockdata\\quizzes\\userquizfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{58915EA0-E7E3-4E65-B414-60C5E6C182D6}|PlatformAPI.csproj|c:\\users\\miche\\documents\\websites\\react.js\\quiz-builder\\platformapi\\models\\studentquizzes\\studentquizanswers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{58915EA0-E7E3-4E65-B414-60C5E6C182D6}|PlatformAPI.csproj|solutionrelative:models\\studentquizzes\\studentquizanswers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{58915EA0-E7E3-4E65-B414-60C5E6C182D6}|PlatformAPI.csproj|c:\\users\\miche\\documents\\websites\\react.js\\quiz-builder\\platformapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{58915EA0-E7E3-4E65-B414-60C5E6C182D6}|PlatformAPI.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{58915EA0-E7E3-4E65-B414-60C5E6C182D6}|PlatformAPI.csproj|c:\\users\\miche\\documents\\websites\\react.js\\quiz-builder\\platformapi\\controllers\\themes\\themecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{58915EA0-E7E3-4E65-B414-60C5E6C182D6}|PlatformAPI.csproj|solutionrelative:controllers\\themes\\themecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{58915EA0-E7E3-4E65-B414-60C5E6C182D6}|PlatformAPI.csproj|c:\\users\\miche\\documents\\websites\\react.js\\quiz-builder\\platformapi\\controllers\\users\\signincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{58915EA0-E7E3-4E65-B414-60C5E6C182D6}|PlatformAPI.csproj|solutionrelative:controllers\\users\\signincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{58915EA0-E7E3-4E65-B414-60C5E6C182D6}|PlatformAPI.csproj|c:\\users\\miche\\documents\\websites\\react.js\\quiz-builder\\platformapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
@@ -88,64 +84,89 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "QuizClone.cs",
-              "DocumentMoniker": "C:\\Users\\miche\\Documents\\Websites\\React.js\\Quiz-Builder\\PlatformAPI\\Controllers\\QuizBuilder\\QuizClone.cs",
-              "RelativeDocumentMoniker": "Controllers\\QuizBuilder\\QuizClone.cs",
-              "ToolTip": "C:\\Users\\miche\\Documents\\Websites\\React.js\\Quiz-Builder\\PlatformAPI\\Controllers\\QuizBuilder\\QuizClone.cs",
-              "RelativeToolTip": "Controllers\\QuizBuilder\\QuizClone.cs",
-              "ViewState": "AgIAAPMAAAAAAAAAAAAAAAABAAAAAAAAAAAAAA==",
+              "Title": "SignInController.cs",
+              "DocumentMoniker": "C:\\Users\\miche\\Documents\\Websites\\React.js\\Quiz-Builder\\PlatformAPI\\Controllers\\Users\\SignInController.cs",
+              "RelativeDocumentMoniker": "Controllers\\Users\\SignInController.cs",
+              "ToolTip": "C:\\Users\\miche\\Documents\\Websites\\React.js\\Quiz-Builder\\PlatformAPI\\Controllers\\Users\\SignInController.cs",
+              "RelativeToolTip": "Controllers\\Users\\SignInController.cs",
+              "ViewState": "AgIAAHkAAAAAAAAAAAAAAIwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-13T17:09:26.112Z",
-              "IsPinned": true,
+              "WhenOpened": "2026-01-13T02:40:40.839Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "QuizInfoTests.cs",
+              "DocumentMoniker": "C:\\Users\\miche\\Documents\\Websites\\React.js\\Quiz-Builder\\PlatformAPI.Tests\\Quizzes\\QuizInfoTests.cs",
+              "RelativeDocumentMoniker": "..\\PlatformAPI.Tests\\Quizzes\\QuizInfoTests.cs",
+              "ToolTip": "C:\\Users\\miche\\Documents\\Websites\\React.js\\Quiz-Builder\\PlatformAPI.Tests\\Quizzes\\QuizInfoTests.cs",
+              "RelativeToolTip": "..\\PlatformAPI.Tests\\Quizzes\\QuizInfoTests.cs",
+              "ViewState": "AgIAAEkAAAAAAAAAAAAQwDIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-25T02:38:59.51Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "SignIn.cshtml.cs",
+              "DocumentMoniker": "C:\\Users\\miche\\Documents\\Websites\\NET_Core\\Recipes_Core\\Recipes_Core\\Pages\\SignIn.cshtml.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\NET_Core\\Recipes_Core\\Recipes_Core\\Pages\\SignIn.cshtml.cs",
+              "ToolTip": "C:\\Users\\miche\\Documents\\Websites\\NET_Core\\Recipes_Core\\Recipes_Core\\Pages\\SignIn.cshtml.cs",
+              "RelativeToolTip": "..\\..\\..\\NET_Core\\Recipes_Core\\Recipes_Core\\Pages\\SignIn.cshtml.cs",
+              "ViewState": "AgIAAGwAAAAAAAAAAAAAAIIAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-25T21:11:49.102Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "QuizInfoController.cs",
               "DocumentMoniker": "C:\\Users\\miche\\Documents\\Websites\\React.js\\Quiz-Builder\\PlatformAPI\\Controllers\\QuizBuilder\\QuizInfoController.cs",
               "RelativeDocumentMoniker": "Controllers\\QuizBuilder\\QuizInfoController.cs",
               "ToolTip": "C:\\Users\\miche\\Documents\\Websites\\React.js\\Quiz-Builder\\PlatformAPI\\Controllers\\QuizBuilder\\QuizInfoController.cs",
               "RelativeToolTip": "Controllers\\QuizBuilder\\QuizInfoController.cs",
-              "ViewState": "AgIAALIAAAAAAAAAAAAAANAAAAARAAAAAAAAAA==",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAQwBoAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-08T20:39:43.219Z",
+              "WhenOpened": "2026-04-24T16:58:43.728Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "QuizTakerController.cs",
-              "DocumentMoniker": "C:\\Users\\miche\\Documents\\Websites\\React.js\\Quiz-Builder\\PlatformAPI\\Controllers\\QuizTaker\\QuizTakerController.cs",
-              "RelativeDocumentMoniker": "Controllers\\QuizTaker\\QuizTakerController.cs",
-              "ToolTip": "C:\\Users\\miche\\Documents\\Websites\\React.js\\Quiz-Builder\\PlatformAPI\\Controllers\\QuizTaker\\QuizTakerController.cs",
-              "RelativeToolTip": "Controllers\\QuizTaker\\QuizTakerController.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAwAAAAQAAAAAAAAAA==",
+              "DocumentIndex": 5,
+              "Title": "UserQuizFactory.cs",
+              "DocumentMoniker": "C:\\Users\\miche\\Documents\\Websites\\React.js\\Quiz-Builder\\PlatformAPI.Tests\\MockData\\Quizzes\\UserQuizFactory.cs",
+              "RelativeDocumentMoniker": "..\\PlatformAPI.Tests\\MockData\\Quizzes\\UserQuizFactory.cs",
+              "ToolTip": "C:\\Users\\miche\\Documents\\Websites\\React.js\\Quiz-Builder\\PlatformAPI.Tests\\MockData\\Quizzes\\UserQuizFactory.cs",
+              "RelativeToolTip": "..\\PlatformAPI.Tests\\MockData\\Quizzes\\UserQuizFactory.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAA9AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-26T16:53:52.539Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-17T17:45:51.253Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "QuizTakerDTO.cs",
-              "DocumentMoniker": "C:\\Users\\miche\\Documents\\Websites\\React.js\\Quiz-Builder\\PlatformAPI\\DTO\\QuizTaker\\QuizTakerDTO.cs",
-              "RelativeDocumentMoniker": "DTO\\QuizTaker\\QuizTakerDTO.cs",
-              "ToolTip": "C:\\Users\\miche\\Documents\\Websites\\React.js\\Quiz-Builder\\PlatformAPI\\DTO\\QuizTaker\\QuizTakerDTO.cs",
-              "RelativeToolTip": "DTO\\QuizTaker\\QuizTakerDTO.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAADwvyoAAAAAAAAAAAAAAA==",
+              "Title": "MyQuizzesTests.cs",
+              "DocumentMoniker": "C:\\Users\\miche\\Documents\\Websites\\React.js\\Quiz-Builder\\PlatformAPI.Tests\\Quizzes\\MyQuizzesTests.cs",
+              "RelativeDocumentMoniker": "..\\PlatformAPI.Tests\\Quizzes\\MyQuizzesTests.cs",
+              "ToolTip": "C:\\Users\\miche\\Documents\\Websites\\React.js\\Quiz-Builder\\PlatformAPI.Tests\\Quizzes\\MyQuizzesTests.cs",
+              "RelativeToolTip": "..\\PlatformAPI.Tests\\Quizzes\\MyQuizzesTests.cs",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAAADAAAABmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-06T22:27:04.389Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-16T22:31:16.408Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "StudentQuizAnswers.cs",
               "DocumentMoniker": "C:\\Users\\miche\\Documents\\Websites\\React.js\\Quiz-Builder\\PlatformAPI\\Models\\StudentQuizzes\\StudentQuizAnswers.cs",
               "RelativeDocumentMoniker": "Models\\StudentQuizzes\\StudentQuizAnswers.cs",
@@ -157,7 +178,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "ThemeController.cs",
               "DocumentMoniker": "C:\\Users\\miche\\Documents\\Websites\\React.js\\Quiz-Builder\\PlatformAPI\\Controllers\\Themes\\ThemeController.cs",
               "RelativeDocumentMoniker": "Controllers\\Themes\\ThemeController.cs",
@@ -166,32 +187,6 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAHUAAABLAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-02-24T23:34:16.382Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "SignInController.cs",
-              "DocumentMoniker": "C:\\Users\\miche\\Documents\\Websites\\React.js\\Quiz-Builder\\PlatformAPI\\Controllers\\Users\\SignInController.cs",
-              "RelativeDocumentMoniker": "Controllers\\Users\\SignInController.cs",
-              "ToolTip": "C:\\Users\\miche\\Documents\\Websites\\React.js\\Quiz-Builder\\PlatformAPI\\Controllers\\Users\\SignInController.cs",
-              "RelativeToolTip": "Controllers\\Users\\SignInController.cs",
-              "ViewState": "AgIAAFIAAAAAAAAAAAAqwAMAAAAUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-13T02:40:40.839Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\miche\\Documents\\Websites\\React.js\\Quiz-Builder\\PlatformAPI\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\miche\\Documents\\Websites\\React.js\\Quiz-Builder\\PlatformAPI\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAG0AAAAAAAAAAAAQwHoAAAAPAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-25T17:32:40.202Z",
               "EditorCaption": ""
             },
             {

@@ -7,6 +7,11 @@ using PlatformAPI.Services;
 using Microsoft.Extensions.Options;
 using Serilog;
 using Microsoft.AspNetCore.DataProtection;
+using Microsoft.AspNetCore.Authentication;
+using PlatformAPI.Repositories.Interfaces;
+using PlatformAPI.Repositories;
+//using PlatformAPI.MockAuth;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -55,6 +60,9 @@ builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<AuthService>();
 builder.Services.AddScoped<IQuestionsRepository, QuestionsRepository>();
 
+builder.Services.AddScoped<ILoginAttemptRepository, LoginAttemptRepository>();
+builder.Services.AddScoped<LoginAttemptAnalyzerService>();
+
 // -------------------------
 // Data Protection
 // -------------------------
@@ -75,10 +83,27 @@ else
 // -------------------------
 // Database
 // -------------------------
-var connectionKey = builder.Configuration["DatabaseConnection"];
+//var connectionKey = builder.Configuration["DatabaseConnection"];
+if (builder.Environment.EnvironmentName != "Testing")
+{
+    var connectionKey = builder.Configuration["DatabaseConnection"];
+    builder.Services.AddDbContext<AppDbContext>(options =>
+        options.UseSqlServer(builder.Configuration.GetConnectionString(connectionKey)));
+}
 
-builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString(connectionKey)));
+
+//builder.Services.AddDbContext<AppDbContext>(options =>
+//    options.UseSqlServer(builder.Configuration.GetConnectionString(connectionKey)));
+
+builder.Services.AddDbContext<AppDbContext>((sp, options) =>
+{
+    // ONLY register SQL Server if the test hasn't already provided InMemory
+    if (!options.IsConfigured)
+    {
+        var connectionKey = builder.Configuration["DatabaseConnection"];
+        options.UseSqlServer(builder.Configuration.GetConnectionString(connectionKey));
+    }
+});
 
 
 // -------------------------
@@ -234,3 +259,6 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+public partial class Program { }
+

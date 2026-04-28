@@ -55,7 +55,7 @@ function SignInForm() {
                                     method: 'PUT',
                                     credentials: 'include'
                                 });
-                                
+
                             } else {
                                 // Optional: handle clone failure
                                 console.error("Starter kit cloning failed.");
@@ -69,13 +69,21 @@ function SignInForm() {
                     } else {
                         setIsLoading(false);
                         setHasStarterKit(null);
-                        setBanner('Invalid username or password');
+                        if (data.status=429) {
+                            setBanner(data.failureReason);
+                        }
+                        else if (data.status=401) {
+                            setBanner('Invalid username or password');
+                        }
+
                     }
                 } catch (err) {
                     setIsLoading(false);
                     setHasStarterKit(null);
                     console.error('Login error:', err);
                     setBanner('Something went wrong');
+
+                    
                 }
             })();
         }

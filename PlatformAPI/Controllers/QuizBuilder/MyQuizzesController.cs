@@ -79,7 +79,13 @@ namespace PlatformAPI.Controllers.QuizBuilder
         [Authorize]
         public async Task<IActionResult> GetQuizzesByAuthenticatedUser()
         {
-            var userId = int.Parse(User.FindFirst("UserId").Value);
+            //var userId = int.Parse(User.FindFirst("UserId").Value);
+            var userIdClaim = User.FindFirst("UserId");
+            if (userIdClaim == null)
+            {
+                return Unauthorized("User ID claim missing.");
+            }
+            var userId = int.Parse(userIdClaim.Value);
 
             var quizzes = await _context.Quizzes
                 .Where(q => q.IsActive && q.UserQuiz.UserId == userId)
