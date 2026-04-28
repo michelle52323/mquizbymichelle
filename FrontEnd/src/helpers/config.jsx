@@ -10,6 +10,8 @@ export function getApiBaseUrl() {
       : import.meta.env.VITE_API_BASE_LOCAL;
   }
 
+  console.log("Current VITE_MODE:", import.meta.env.VITE_MODE);
+  console.log("Current API Base URL:", import.meta.env.VITE_API_BASE);
   if (mode === 'prod') {
     return import.meta.env.VITE_API_BASE;
   }
