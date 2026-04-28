@@ -4,7 +4,7 @@ import { getApiBaseUrl, isMobileTouchDevice } from '../helpers/config';
 import { getSmartTitleClass } from '../helpers/displayHelper';
 import { getThemeIdFromCookie } from '../helpers/cookieHelper';
 import FeedbackBanner from './UserControls/FeedbackBanner/FeedbackBanner';
-import CheckAuth from '../components/Account/checkAuth';
+import CheckAuth from '../components/Account/CheckAuth';
 import Icon from '../components/UserControls/Icons/icons';
 import Menu from '../components/UserControls/Menu/Menu';
 import ButtonGrid from './UserControls/ButtonGrid/ButtonGrid';
