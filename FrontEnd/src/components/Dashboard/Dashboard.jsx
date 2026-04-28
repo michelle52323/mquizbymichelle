@@ -4,7 +4,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import Icon from '../UserControls/Icons/icons';
 
-import CheckAuth from '../../components/Account/checkAuth';
+import CheckAuth from '../../components/Account/CheckAuth';
 
 function Dashboard() {
     const navigate = useNavigate();
