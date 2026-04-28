@@ -3,7 +3,7 @@ import SignIn from './components/SignIn/SignIn.jsx';
 import Register from './components/Account/Register/Register';
 import ThemeSelectorPage from './components/Account/Themes/Themes';
 import Profile from './components/Account/Profile/Profile';
-import Dashboard from './components/Dashboard/dashboard.jsx';
+import Dashboard from './components/Dashboard/Dashboard.jsx';
 import MyQuizzes from './components/QuizBuilder/MyQuizzes/MyQuizzes.jsx'
 import QuizInfo from './components/QuizBuilder/QuizInfo/QuizInfo'
 import Questions from './components/QuizBuilder/Questions/Questions'
