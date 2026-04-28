@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useOutletContext } from 'react-router-dom';
-import CheckAuth from '../../../components/Account/checkAuth';
+import CheckAuth from '../../../components/Account/CheckAuth';
 import { getApiBaseUrl } from '../../../helpers/config';
 import { Dropdown } from "../../UserControls/Dropdown/Dropdown";
 import ButtonGrid from "../../UserControls/ButtonGrid/ButtonGrid";

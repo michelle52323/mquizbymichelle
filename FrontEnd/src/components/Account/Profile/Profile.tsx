@@ -5,7 +5,7 @@ import type { LayoutContext } from '../../Layout';
 import { Dropdown } from '../../../components/UserControls/Dropdown/Dropdown';
 import TextboxUnique from '../../UserControls/TextboxUnique/TextboxUnique';
 import { checkEmailForProfile } from '../../UserControls/TextboxUnique/uniquevalidation';
-import CheckAuth from '../../../components/Account/checkAuth';
+import CheckAuth from '../../../components/Account/CheckAuth';
 
 import ButtonGrid from '../../../components/UserControls/ButtonGrid/ButtonGrid';
 
