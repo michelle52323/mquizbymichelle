@@ -36,14 +36,14 @@ jobs:
         working-directory: ./FrontEnd
         run: npm install
 
-      # - name: Run React Tests (Uncomment this once you have your tests!)
-      #   working-directory: ./FrontEnd
-      #   run: npm test -- --watchAll=false
-
       - name: Build React App
         working-directory: ./FrontEnd
         run: npm run build
-        - name: Debug Env Vars
+        env:
+          VITE_API_BASE: ${{ secrets.VITE_API_BASE }}
+          VITE_MODE: ${{ secrets.VITE_MODE }}
+
+      - name: Debug Env Vars
         run: |
           echo "API BASE: $VITE_API_BASE"
           echo "MODE: $VITE_MODE"
@@ -52,25 +52,24 @@ jobs:
           VITE_MODE: ${{ secrets.VITE_MODE }}
 
       # --- DEPLOYMENT ---
-      
+
       # 1. Deploy the Backend API
       - name: Publish API
         run: dotnet publish PlatformAPI/PlatformAPI.csproj --configuration Release --output ./publish
 
-      # Then in the deploy step:
       - name: Deploy API to Azure
         uses: azure/webapps-deploy@v2
         with:
           app-name: 'quiz-app-web-app'
           publish-profile: ${{ secrets.AZURE_API_PUBLISH_PROFILE }}
-          package: './publish' # Point to the output of the publish command
+          package: './publish'
 
       # 2. Deploy the React Front-End
       - name: Deploy Front-End to Azure SWA
         uses: Azure/static-web-apps-deploy@v1
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_SWA_DEPLOY_TOKEN }}
-          repo_token: ${{ secrets.GITHUB_TOKEN }} # Built into GitHub, no setup needed
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: "upload"
-          app_location: "./FrontEnd"          # Path to your source code
-          output_location: "dist"             # Path to your built files (usually 'dist' or 'build')
+          app_location: "./FrontEnd"
+          output_location: "dist"
