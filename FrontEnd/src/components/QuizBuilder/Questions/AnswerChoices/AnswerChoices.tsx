@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useOutletContext, useParams } from "react-router-dom";
 
 import { isMobileTouchDevice } from "../../../../helpers/config";
-import CheckAuth from "../../../../components/Account/checkAuth";
+import CheckAuth from "../../../../components/Account/CheckAuth";
 import type { LayoutContext } from "../../../Layout";
 
 import AnswerChoicesListMobile from "./AnswerChoicesListMobile";

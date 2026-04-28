@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useState, useEffect, useMemo } from 'react';
 import { useOutletContext, useParams, useNavigate, useLocation } from 'react-router-dom';
 import { getApiBaseUrl } from '../../../helpers/config';
-import CheckAuth from '../../../components/Account/checkAuth';
+import CheckAuth from '../../../components/Account/CheckAuth';
 import { Dropdown } from '../../UserControls/Dropdown/Dropdown';
 import type { LayoutContext } from '../../Layout';
 import Icon from '../../UserControls/Icons/icons';

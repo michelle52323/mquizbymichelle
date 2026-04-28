@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useOutletContext } from 'react-router-dom';
 import { isMobileTouchDevice } from '../../../helpers/config';
-import CheckAuth from '../../../components/Account/checkAuth';
+import CheckAuth from '../../../components/Account/CheckAuth';
 import QuizListMobile from './MyQuizzesMobile';
 import QuizListDesktop from './MyQuizzesDesktop';
 import ButtonGrid from '../../UserControls/ButtonGrid/ButtonGrid';

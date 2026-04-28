@@ -3,7 +3,7 @@ import { isMobileTouchDevice } from '../../../helpers/config';
 import ProgressBar from "../../UserControls/ProgressBar/ProgressBar";
 import { useOutletContext, useParams, useNavigate, useLocation } from 'react-router-dom';
 import { getApiBaseUrl } from '../../../helpers/config';
-import CheckAuth from '../../../components/Account/checkAuth';
+import CheckAuth from '../../../components/Account/CheckAuth';
 import Icon from '../../UserControls/Icons/icons'
 import ButtonGrid from "../../UserControls/ButtonGrid/ButtonGrid";
 import type { Quiz } from 'src/types/Quiz/Quiz';

@@ -4,7 +4,7 @@ import type { TakerQuiz } from "../../../types/Quiz/Quiz"
 import type { TakerQuestion } from "../../../types/Questions/Question"
 import type { TakerAnswerChoice } from "../../../types/AnswerChoices/AnswerChoice"
 import { QuestionType } from "../../../types/Questions/QuestionType"
-import CheckAuth from '../../../components/Account/checkAuth';
+import CheckAuth from '../../../components/Account/CheckAuth';
 import { getApiBaseUrl } from "../../../helpers/config";
 import Loader from "../../../components/UserControls/Loader/Loader";
 import { StudentAnswerSheet, LoadAnswerSheetRequestDTO } from "src/types/StudentAnswerSheet/StudentAnswerSheet";

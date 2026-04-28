@@ -97,7 +97,7 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "PlatformAPI",
+              "Title": "PlatformAPI.csproj",
               "DocumentMoniker": "C:\\Users\\miche\\Documents\\Websites\\React.js\\Quiz-Builder\\PlatformAPI\\PlatformAPI.csproj",
               "RelativeDocumentMoniker": "PlatformAPI.csproj",
               "ToolTip": "C:\\Users\\miche\\Documents\\Websites\\React.js\\Quiz-Builder\\PlatformAPI\\PlatformAPI.csproj",
@@ -117,8 +117,7 @@
               "RelativeToolTip": "Controllers\\Users\\SignInController.cs",
               "ViewState": "AgIAAHkAAAAAAAAAAAAAAIwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-13T02:40:40.839Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-13T02:40:40.839Z"
             },
             {
               "$type": "Document",

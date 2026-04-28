@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import CheckAuth from '../../../components/Account/checkAuth';
+import CheckAuth from '../../../components/Account/CheckAuth';
 import SignOut from '../../../components/Account/signOut/signOut';
 import './menu.css';
 
