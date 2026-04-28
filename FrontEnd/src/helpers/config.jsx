@@ -12,7 +12,7 @@ export function getApiBaseUrl() {
 
   //console.log("Current VITE_MODE:", import.meta.env.VITE_MODE);
   //console.log("Current API Base URL:", import.meta.env.VITE_API_BASE);
-  if (mode === 'prod') {
+  if (mode === 'Production') {
     return import.meta.env.VITE_API_BASE;
   }
 
@@ -61,5 +61,5 @@ export function isIOS() {
 
 
 export function isProdMode() {
-  return import.meta.env.VITE_MODE === 'prod';
+  return import.meta.env.VITE_MODE === 'Production';
 }
