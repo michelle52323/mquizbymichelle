@@ -52,14 +52,17 @@ jobs:
         env:
           VITE_API_BASE: ${{ secrets.VITE_API_BASE }}
           VITE_MODE: ${{ secrets.VITE_MODE }}
+          VITE_PUBLIC_ROUTES: ${{ secrets.VITE_PUBLIC_ROUTES }}
 
       - name: Debug Env Vars
         run: |
           echo "API BASE: $VITE_API_BASE"
           echo "MODE: $VITE_MODE"
+          echo "PUBLIC ROUTES: $VITE_PUBLIC_ROUTES"
         env:
           VITE_API_BASE: ${{ secrets.VITE_API_BASE }}
           VITE_MODE: ${{ secrets.VITE_MODE }}
+          VITE_PUBLIC_ROUTES: ${{ secrets.VITE_PUBLIC_ROUTES }}
 
       # --- DEPLOYMENT ---
       # 1. Deploy the Backend API
