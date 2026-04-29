@@ -1,4 +1,5 @@
 name: Deploy MQuiz App
+
 on:
   push:
     branches: [ "main" ]
@@ -7,6 +8,7 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     environment: Production
+
     steps:
       - uses: actions/checkout@v4
 
@@ -19,15 +21,8 @@ jobs:
       - name: Build API
         run: dotnet build PlatformAPI/PlatformAPI.csproj --configuration Release
 
-      - name: Create Production Blueprint
-        run: |
-          cat <<EOF > PlatformAPI/appsettings.json
-          {
-            "ConnectionStrings": {
-              "LiveConnection": "Placeholder"
-            }
-          }
-          EOF
+      - name: Create Mock Settings
+        run: cp PlatformAPI/appsettings.Test.json PlatformAPI/appsettings.json
 
       - name: Run xUnit Tests
         run: dotnet test PlatformAPI.Tests/PlatformAPI.Tests.csproj --configuration Release --verbosity normal
@@ -58,6 +53,7 @@ jobs:
           VITE_MODE: ${{ secrets.VITE_MODE }}
 
       # --- DEPLOYMENT ---
+
       # 1. Deploy the Backend API
       - name: Publish API
         run: dotnet publish PlatformAPI/PlatformAPI.csproj --configuration Release --output ./publish
