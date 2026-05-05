@@ -99,12 +99,12 @@ const Menu = React.forwardRef<HTMLDivElement, MenuProps>(({ isOpen, closeMenu },
                 </button>
             </div>
 
-            {/* <div className="menu-item">
+            <div className="menu-item">
                 <button className="menu-button-link" onClick={() => handleNavigate("/account/changepassword")}>
                     <div className="menu-icon">🔑</div>
                     <div className="menu-text">Change Password</div>
                 </button>
-            </div> */}
+            </div>
 
             <div className="menu-item">
                 <button className="menu-button-link" onClick={() => handleNavigate("/account/themes")}>

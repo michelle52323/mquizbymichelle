@@ -9,6 +9,13 @@
     animation: fadeIn 0.2s ease-out forwards;
 }
 
+.loader-inline {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -33,4 +40,23 @@
 .loader-message{
     font-size: 15px;
     text-align:center;
+}
+
+@media (min-width: 768px) and (max-width: 885px) {
+    .loader-message-shrink-text {
+        font-size: 12px;
+        padding-left: 6px;
+        padding-right: 6px;
+        
+    }
+}
+
+
+@media (max-width: 580px) {
+    .loader-message-shrink-text {
+        font-size: 11px;
+        padding-left: 3px;
+        padding-right: 3px;
+        
+    }
 }

@@ -13,6 +13,7 @@ import Review from './components/QuizBuilder/Review/Review'
 import Intro from './components/QuizTaker/Intro/Intro'
 import QuizTakerRoutes from './components/QuizTaker/Routes/QuizTakerRoutes'
 import QuizProvider from './components/QuizTaker/QuizProvider/QuizProvider'
+import ChangePasswordPage from './components/Account/ChangePassword/ChangePasswordPage.tsx'
 
 import Layout from './components/Layout.tsx';
 import LoadCheckAuth from './components/LoadCheckAuth/LoadCheckAuth.jsx';
@@ -98,6 +99,8 @@ function App() {
                 <Route path="account/themes" element={<ThemeSelectorPage />} />
                 <Route path="account/profile" element={<Profile />} />
 
+                <Route path="account/changepassword" element={<ChangePasswordPage />} />
+
                 <Route path="quizbuilder/myquizzes" element={<MyQuizzes />} />
                 <Route path="quizbuilder/quizinfo" element={<QuizInfo />} />
                 <Route path="quizbuilder/quizinfo/:id" element={<QuizInfo />} />
@@ -113,6 +116,8 @@ function App() {
 
                 <Route path="quizbuilder/review" element={<Review />} />
                 <Route path="quizbuilder/review/:id" element={<Review />} />
+
+
 
                 {/* <Route path="quiz/intro" element={<Intro />} />
                 <Route path="quiz/intro/:quizId" element={<Intro />} /> */}

@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from 'react-router-dom';
 import { isMobileTouchDevice } from '../../../helpers/config';
 interface ButtonConfig {
-    text: string;
+    text: string | React.ReactNode
     icon?: React.ReactNode;
     url?: string;
     onClick?: () => void;

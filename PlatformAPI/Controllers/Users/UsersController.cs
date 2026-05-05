@@ -50,6 +50,16 @@ namespace PlatformAPI.Controllers.Users
         public int? GenderId { get; set; }
     }
 
+    public class VerifyPasswordRequest
+    {
+        public string CurrentPassword { get; set; }
+    }
+
+    public class SavePasswordRequest
+    {
+        public string NewPassword { get; set; }
+    }
+
 
 
     #endregion
@@ -138,6 +148,78 @@ namespace PlatformAPI.Controllers.Users
                 });
             }
         }
+
+
+        [HttpPost("verify-password")]
+        [Authorize]
+        public async Task<IActionResult> VerifyPassword([FromBody] VerifyPasswordRequest dto)
+        {
+            try
+            {
+                // -----------------------------
+                // 1. Extract UserId from claims
+                // -----------------------------
+                var claims = User.Claims.ToDictionary(c => c.Type, c => c.Value);
+
+                if (!claims.TryGetValue("UserId", out var userIdString) ||
+                    !int.TryParse(userIdString, out var userId))
+                {
+                    return BadRequest(new
+                    {
+                        success = false,
+                        error = "User ID claim missing or invalid."
+                    });
+                }
+
+                // -----------------------------
+                // 2. Load user with LINQ pattern
+                // -----------------------------
+                var user = await _context.Users
+                    .Include(u => u.UserType)
+                    .Include(u => u.Gender)
+                    .FirstOrDefaultAsync(u => u.Id == userId);
+
+                if (user == null)
+                {
+                    return BadRequest(new
+                    {
+                        success = false,
+                        error = "User not found."
+                    });
+                }
+
+                // -----------------------------
+                // 3. Verify password using bcrypt
+                // -----------------------------
+                bool isMatch = PasswordHasher.Verify(dto.CurrentPassword, user.Password);
+
+                if (!isMatch)
+                {
+                    return Ok(new
+                    {
+                        success = false,
+                        error = "Incorrect password."
+                    });
+                }
+
+                // -----------------------------
+                // 4. Success
+                // -----------------------------
+                return Ok(new
+                {
+                    success = true
+                });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new
+                {
+                    success = false,
+                    error = ex.Message
+                });
+            }
+        }
+
 
         #endregion
 
@@ -234,6 +316,75 @@ namespace PlatformAPI.Controllers.Users
 
             return Ok("Password updated successfully");
         }
+
+        [HttpPost("save-password")]
+        [Authorize]
+        public async Task<IActionResult> SavePassword([FromBody] SavePasswordRequest dto)
+        {
+            try
+            {
+                // -----------------------------
+                // 1. Extract UserId from claims
+                // -----------------------------
+                var claims = User.Claims.ToDictionary(c => c.Type, c => c.Value);
+
+                if (!claims.TryGetValue("UserId", out var userIdString) ||
+                    !int.TryParse(userIdString, out var userId))
+                {
+                    return BadRequest(new
+                    {
+                        success = false,
+                        error = "User ID claim missing or invalid."
+                    });
+                }
+
+                // -----------------------------
+                // 2. Load user with your LINQ pattern
+                // -----------------------------
+                var user = await _context.Users
+                    .Include(u => u.UserType)
+                    .Include(u => u.Gender)
+                    .FirstOrDefaultAsync(u => u.Id == userId);
+
+                if (user == null)
+                {
+                    return BadRequest(new
+                    {
+                        success = false,
+                        error = "User not found."
+                    });
+                }
+
+                // -----------------------------
+                // 3. Hash the new password
+                // -----------------------------
+                string newHash = PasswordHasher.Hash(dto.NewPassword);
+
+                // -----------------------------
+                // 4. Save to database
+                // -----------------------------
+                user.Password = newHash;
+
+                await _context.SaveChangesAsync();
+
+                // -----------------------------
+                // 5. Success response
+                // -----------------------------
+                return Ok(new
+                {
+                    success = true
+                });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new
+                {
+                    success = false,
+                    error = ex.Message
+                });
+            }
+        }
+
 
         [Authorize]
         [HttpPut("set-starter-kit")]

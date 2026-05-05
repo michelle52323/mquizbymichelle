@@ -1,63 +1,87 @@
 :root {
-  --dropdownBackColor: #0058f2;
-  --dropdownTextColor: #ffffff;
-  --dropdownHoverBackColor: #0030a0;
-  --dropdownHoverTextColor: #ffffff;
-  --dropdownContentBackgroundColor: #0058f2;
-  --dropdownContentTextColor: #ffffff;
+    --dropdownBackColor: #0058f2;
+    --dropdownTextColor: #ffffff;
+    --dropdownHoverBackColor: #0030a0;
+    --dropdownHoverTextColor: #ffffff;
+    --dropdownContentBackgroundColor: #0058f2;
+    --dropdownContentTextColor: #ffffff;
 
-  --textBoxLabelColor: #0048d1;
-  --buttonBackgroundColor: #0058f2;
-  --buttonTextColor: #ffffff;
-  --buttonHoverBackgroundColor: #0030a0;
-  --buttonHoverTextColor: #ffffff;
+    --textBoxLabelColor: #0048d1;
+    --buttonBackgroundColor: #0058f2;
+    --buttonTextColor: #ffffff;
+    --buttonHoverBackgroundColor: #0030a0;
+    --buttonHoverTextColor: #ffffff;
 
-  --contentBackColor: #ffffff;
-  --textBoxTextColor: #000000;
-  --textBoxBackColor: #A0C2FF;
-  --outsideBackColor: #f3f5f7;
-  --textBoxBorderColor: #0000ee;
+    --contentBackColor: #ffffff;
+    --textBoxTextColor: #000000;
+    --textBoxBackColor: #A0C2FF;
+    --outsideBackColor: #f3f5f7;
+    --textBoxBorderColor: #0000ee;
 
-  --dropdownBackColorGradient: #3178dd;
-  --dropdownHoverBackColorGradient: #0042b8;
-  --dropdownContentBackgroundColorGradient: #3178dd;
+    --dropdownBackColorGradient: #3178dd;
+    --dropdownHoverBackColorGradient: #0042b8;
+    --dropdownContentBackgroundColorGradient: #3178dd;
 
-  --buttonBackgroundColorGradient: #3178dd;
-  --buttonHoverBackgroundColorGradient: #0042b8;
+    --buttonBackgroundColorGradient: #3178dd;
+    --buttonHoverBackgroundColorGradient: #0042b8;
 
-  --contentBackColorGradient: #efefef;
-  --textBoxBackColorGradient: #78AFFF;
-  --outsideBackColorGradient: #e3e5e7;
+    --contentBackColorGradient: #efefef;
+    --textBoxBackColorGradient: #78AFFF;
+    --outsideBackColorGradient: #e3e5e7;
 
-  --contentHeaderBackColor: #0054ff;
-  --contentHeaderBackColorGradient: #1074ef;
-  --contentHeaderTextColor: #ffffff;
-  --contentTextColor: #0038a1;
-  --linkTextColor: #0038a1;
+    --contentHeaderBackColor: #0054ff;
+    --contentHeaderBackColorGradient: #1074ef;
+    --contentHeaderTextColor: #ffffff;
+    --contentTextColor: #0038a1;
+    --linkTextColor: #0038a1;
 
-  --radioLabelColor: #0048d1;
-  --radioHoverColor: #003cb5;
-  --radioCheckColor: #0048d1;
+    --radioLabelColor: #0048d1;
+    --radioHoverColor: #003cb5;
+    --radioCheckColor: #0048d1;
 
-  --dialogHeaderBackColor: #0054ff;
-  --dialogHeaderBackColorGradient: #1074ef;
-  --dialogHeaderTextColor: #ffffff;
-  --dialogContentBackColor: #c3c5c7;
-  --dialogContentBackColorGradient: #b3b5b7;
-  --dialogContentTextColor: #00143f;
+    --dialogHeaderBackColor: #0054ff;
+    --dialogHeaderBackColorGradient: #1074ef;
+    --dialogHeaderTextColor: #ffffff;
+    --dialogContentBackColor: #c3c5c7;
+    --dialogContentBackColorGradient: #b3b5b7;
+    --dialogContentTextColor: #00143f;
 
-  --sortableBorder: #0048d1;
-  --sortableHighlightBackColor: #0048d1;
-  --sortableHighlightBackColorGradient: #0058f2;
+    --sortableBorder: #0048d1;
+    --sortableHighlightBackColor: #0048d1;
+    --sortableHighlightBackColorGradient: #0058f2;
 
-  --textBoxBorderColorSelected: #101010;
-  --passwordIconColor: #0018a1;
+    --textBoxBorderColorSelected: #101010;
+    --passwordIconColor: #0018a1;
+
+     --spinnerBorderColor: rgba(0, 0, 0, 0.4);
+     --spinnerTopColor: #4a90e2;
 }
 
-.theme8{
- --contentHeaderBackColor: #2c8f00;
-  --contentHeaderBackColorGradient: #56ab5a;
-  --contentHeaderTextColor: #fdd835;   
+.theme-1{
+--spinnerBorderColor: rgba(0, 0, 0, 0.15);
+--spinnerTopColor: #4a90e2;
+
+}
+
+.theme-4{
+--spinnerBorderColor: rgba(0, 0, 0, 0.15);
+--spinnerTopColor: #4a90e2;
+
+}
+
+.theme-3{
+     --spinnerBorderColor: rgba(255, 255, 255, 0.35);
+     --spinnerTopColor: #00b0a0;
+}
+.theme-5{
+     --spinnerBorderColor: rgba(255, 255, 255, 0.35);
+     --spinnerTopColor: #00bf73;
+}
+
+.theme8 {
+    --contentHeaderBackColor: #2c8f00;
+    --contentHeaderBackColorGradient: #56ab5a;
+    --contentHeaderTextColor: #fdd835;
 }
 
 
@@ -121,9 +145,7 @@ a:focus {
     height: auto;
 }
 
-.page-fade-in {
-    
-}
+.page-fade-in {}
 
 .page-fade-in-mobile {
     opacity: 0;
@@ -282,11 +304,11 @@ a:focus {
     height: 44px !important;
 }
 
-.card-title-long-wide-screen{
+.card-title-long-wide-screen {
     font-size: clamp(13px, 4.5vw, 21px);
 }
 
-.card-title-long-narrow-screen{
+.card-title-long-narrow-screen {
     font-size: clamp(13px, 3.5vw, 21px);
 }
 
@@ -434,7 +456,7 @@ label {
     padding: 5px 0px 5px 15px;
 }
 
-.indented-content{
+.indented-content {
     padding-left: 30px;
 }
 
@@ -639,7 +661,8 @@ a.button-tiny-ios {
         font-size: 12px;
         padding-left: 6px;
         padding-right: 6px;
-        min-height: 38px; /* match your normal button height */
+        min-height: 38px;
+        /* match your normal button height */
     }
 }
 
@@ -677,7 +700,7 @@ a.button-tiny-ios {
 
 }
 
-.button-icon-save{
+.button-icon-save {
     padding: 1px 0px 0px 4px !important;
 }
 
@@ -689,7 +712,7 @@ a.button-tiny-ios {
     padding: 0px 0px 0px 1px !important;
 }
 
-.button-icon-review{
+.button-icon-review {
     padding: 0px 0px 0px 5px !important;
 }
 
@@ -711,8 +734,8 @@ a.button-tiny-ios {
     margin-left: 4px;
 }
 
-.button-icon-more-options{
-    padding-top:4px;
+.button-icon-more-options {
+    padding-top: 4px;
     padding-left: 3px;
 }
 
@@ -750,9 +773,7 @@ a.button-tiny-ios {
     height: 15px;
 }
 
-.form-label{
-
-}
+.form-label {}
 
 .form-label-tight {
     padding: 2px 10px 3px 15px;
@@ -1241,26 +1262,64 @@ a.button-tiny-ios {
     -webkit-user-select: none;
 }
 
-.dashboard-link{
+.dashboard-link {
     font-size: 18px;
 }
 
 .starter-kit-link {
     display: inline-flex;
     align-items: center;
-    gap: 6px; /* space between icon and text */
+    gap: 6px;
+    /* space between icon and text */
 }
 
 
 .spinner {
     width: 48px;
     height: 48px;
-    border: 4px solid rgba(0, 0, 0, 0.1);
-    border-top-color: #4a90e2; /* or your brand color */
+    border: 4px solid var(--spinnerBorderColor);
+    border-top-color: var(--spinnerTopColor);
+    /* or your brand color */
     border-radius: 50%;
     animation: spin 1.3s linear infinite;
     margin-bottom: 16px;
 }
+
+.spinner-dark{
+    border: 4px solid rgba(0, 0, 0, 0.4);
+    border-top-color: #6aa0f2;
+}
+
+.spinner.small {
+    width: 20px;
+    height: 20px;
+    border-width: 3px;
+    margin-bottom: 0;
+    /* no spacing inside buttons */
+}
+
+@media (min-width: 768px) and (max-width: 885px) {
+    .spinner.small {
+        width: 18px;
+        height: 18px;
+        border-width: 3px;
+        margin-bottom: 0;
+        /* no spacing inside buttons */
+    }
+}
+
+
+@media (max-width: 580px) {
+    .spinner.small {
+        width: 17px;
+        height: 17px;
+        border-width: 3px;
+        margin-bottom: 0;
+        /* no spacing inside buttons */
+    }
+}
+
+
 
 @keyframes spin {
     to {
@@ -1272,6 +1331,7 @@ a.button-tiny-ios {
     from {
         transform: translateY(100%);
     }
+
     to {
         transform: translateY(0);
     }
@@ -1281,6 +1341,7 @@ a.button-tiny-ios {
     from {
         transform: translateY(0);
     }
+
     to {
         transform: translateY(100%);
     }
@@ -1293,5 +1354,3 @@ a.button-tiny-ios {
 .mobile-bottom-sheet.closing {
     animation: slideDown 0.15s ease-in forwards;
 }
-
-

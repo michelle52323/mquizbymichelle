@@ -112,7 +112,7 @@ function Layout({ buttonSlot, footerSlots }: LayoutProps) {
         // Authenticated user
 
         const resolvedThemeId = parseInt(auth.claims.ThemeId ?? "1", 10);
-        //const resolvedThemeId = 7;
+        //const resolvedThemeId = 8;
 
         setActualThemeId(resolvedThemeId);
 
