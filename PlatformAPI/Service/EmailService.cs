@@ -35,6 +35,7 @@ public class EmailService
 
             using var smtp = new SmtpClient(smtpServer, smtpPort)
             {
+                UseDefaultCredentials = false,
                 Credentials = new NetworkCredential(AdminEmail, adminPassword),
                 EnableSsl = true
             };
