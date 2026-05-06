@@ -19,7 +19,7 @@ interface ChangePasswordProps {
     forgotPassword?: boolean | null;   // defaults to false
     token?: string | null;             // only used when forgotPassword = true
     onSaveAndContinue: (model: ChangePasswordModel) => void;
-    onCancel: () => void;
+    onCancel?: () => void;
     isSaving: boolean;
     setIsSaving: (value: boolean) => void;
 }
@@ -203,10 +203,11 @@ function ChangePassword({
                     // Desktop slots 1 & 2 are spacers
                     {
                         text: "Cancel",
-                        onClick: onCancel,
+                        onClick: !forgotPassword ? onCancel : null,
                         type: "button",
                         mobileSlot: 1,
-                        desktopSlot: 3
+                        desktopSlot: forgotPassword ? 2 : 3,
+                        isVisible: !forgotPassword
                     },
                     {
                         text: (isSaving || verifyingPassword) ? (
@@ -215,8 +216,8 @@ function ChangePassword({
                         onClick: handleInternalSave,
                         type: "button",
                         isDisabled: (isSaving || verifyingPassword),
-                        mobileSlot: 3,
-                        desktopSlot: 5
+                        mobileSlot: forgotPassword ? 2 : 3,
+                        desktopSlot: forgotPassword ? 3 : 5
                     }
                 ]}
             />

@@ -14,6 +14,8 @@ import Intro from './components/QuizTaker/Intro/Intro'
 import QuizTakerRoutes from './components/QuizTaker/Routes/QuizTakerRoutes'
 import QuizProvider from './components/QuizTaker/QuizProvider/QuizProvider'
 import ChangePasswordPage from './components/Account/ChangePassword/ChangePasswordPage.tsx'
+import ForgotPassword from './components/Account/ForgotPassword/ForgotPassword'
+import ResetPasswordPage from './components/Account/ForgotPassword/ResetPassword'
 
 import Layout from './components/Layout.tsx';
 import LoadCheckAuth from './components/LoadCheckAuth/LoadCheckAuth.jsx';
@@ -34,11 +36,11 @@ function App() {
                 element={
                     <Layout
                         footerSlots={[
-                            // <FormFooterLink
-                            //     text="Forgot Password?"
-                            //     linkText="Click here to reset password"
-                            //     linkUrl="/forgot-password"
-                            // />,
+                            <FormFooterLink
+                                text="Forgot Password?"
+                                linkText="Click here to reset password"
+                                linkUrl="/account/forgotpassword"
+                            />,
                             <FormFooterLink
                                 text="Interested in signing up?"
                                 linkText="Register for Online Access"
@@ -69,21 +71,27 @@ function App() {
             </Route>
 
             {/* FORGOT PASSWORD (when you build it) */}
-            {/* <Route
+            <Route
                 element={
                     <Layout
                         footerSlots={[
                             <FormFooterLink
-                                text="Remembered your password?"
-                                linkText="Return to Sign In"
+                                text="Already have an account?"
+                                linkText="Sign in here"
                                 linkUrl="/signin"
+                            />,
+                            <FormFooterLink
+                                text="Interested in signing up?"
+                                linkText="Register for Online Access"
+                                linkUrl="/account/register"
                             />
                         ]}
                     />
                 }
             >
-                <Route path="forgot-password" element={<ForgotPassword />} />
-            </Route> */}
+                <Route index element={<Navigate to="/account/forgotpassword" replace />} />
+                <Route path="account/forgotpassword" element={<ForgotPassword />} />
+            </Route>
 
 
 
@@ -100,6 +108,9 @@ function App() {
                 <Route path="account/profile" element={<Profile />} />
 
                 <Route path="account/changepassword" element={<ChangePasswordPage />} />
+                <Route path="account/forgotpassword" element={<ForgotPassword />} />
+                <Route path="account/resetpassword" element={<ResetPasswordPage />} />
+                <Route path="account/resetpassword/:token" element={<ResetPasswordPage />} />
 
                 <Route path="quizbuilder/myquizzes" element={<MyQuizzes />} />
                 <Route path="quizbuilder/quizinfo" element={<QuizInfo />} />

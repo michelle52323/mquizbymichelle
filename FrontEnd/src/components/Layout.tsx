@@ -57,6 +57,7 @@ function Layout({ buttonSlot, footerSlots }: LayoutProps) {
     const isPublicRoute = publicRoutes.includes(currentRoute);
     const isMobile = isMobileTouchDevice();
     const useCard = isPublicRoute && !isMobileTouchDevice();
+    const isResetPasswordPage = currentRoute.toLowerCase().includes("resetpassword");
 
     const cardClassName = useCard ? 'use-card' : 'no-card';
     const borderClassName = useCard ? 'use-border' : 'no-border';
@@ -223,7 +224,7 @@ function Layout({ buttonSlot, footerSlots }: LayoutProps) {
                 <div className={innerHeightClass}>
                     <div className={cardClassName}>
                         <header className={`card-title d-flex ${borderClassName}`}>
-                            {!isPublicRoute && (
+                            {!isPublicRoute && !isResetPasswordPage && (
                                 <div className="home-icon-holder">
                                     <a href="#" className="card-text-color icon-margin" id="menuToggle" onClick={toggleMenu}>
                                         <Icon name="menu" />
@@ -262,7 +263,7 @@ function Layout({ buttonSlot, footerSlots }: LayoutProps) {
                 )}
 
 
-                <footer>© {currentYear} Quiz Builder</footer>
+                <footer>© {currentYear} M Quiz</footer>
                 <Menu isOpen={menuOpen} closeMenu={() => setMenuOpen(false)} ref={menuRef} />
             </div>
         </div>

@@ -5,6 +5,7 @@ import PasswordInput from '../../../components/UserControls/PasswordToggle/Passw
 import { Dropdown } from '../../../components/UserControls/Dropdown/Dropdown';
 import PasswordStrengthMeter from '../../UserControls/PasswordStrengthMeter/PasswordStrengthMeter'
 import TextboxUnique from '../../UserControls/TextboxUnique/TextboxUnique';
+import Loader from '../../UserControls/Loader/Loader';
 
 import { checkEmail, checkUsername } from '../../UserControls/TextboxUnique/uniquevalidation';
 import '../../../radio.css';
@@ -30,6 +31,7 @@ function Register() {
     const [accountType, setAccountType] = useState('');
     const [genderOptions, setGenderOptions] = useState([]);
     const [errors, setErrors] = useState({} as any);
+    const [isRegistering, setIsRegistering] = useState(false);
 
     const API_BASE = getApiBaseUrl();
     const navigate = useNavigate();
@@ -108,6 +110,7 @@ function Register() {
 
         (async () => {
             try {
+                setIsRegistering(true);
                 const response = await fetch(`${API_BASE}/api/Users/register`, {
                     method: 'POST',
                     credentials: 'include',
@@ -126,12 +129,15 @@ function Register() {
                 const data = await response.json();
 
                 if (data.success) {
+                    setIsRegistering(false);
                     setBanner('Registration successful! You may now sign in.');
                     navigate('/signin');
                 } else {
+                    setIsRegistering(false);
                     setBanner(data.message || 'Registration failed');
                 }
             } catch (err) {
+                setIsRegistering(false);
                 console.error('Registration error:', err);
                 setBanner('Something went wrong');
             }
@@ -158,6 +164,18 @@ function Register() {
     }, []);
 
     const cardClass = isMobileTouchDevice() ? "mobile-card" : "narrow-card";
+
+    if (isRegistering){
+        return (
+            <div className={`${cardClass} narrow-card content-holder-narrow`}
+                style={{ height: '667px' }}
+            >
+                <div className="form-row" style={{ marginTop: '300px', textAlign: 'left' }}>
+                    <Loader message="Creating your account..." />
+                </div>
+            </div>
+        );
+    }
 
     return (
         <form onSubmit={handleSubmit}>

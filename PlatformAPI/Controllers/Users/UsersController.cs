@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+using PlatformAPI.Configuration;
 using PlatformAPI.Data;
 using PlatformAPI.Models.Users;
 using PlatformAPI.Security;
@@ -60,6 +62,12 @@ namespace PlatformAPI.Controllers.Users
         public string NewPassword { get; set; }
     }
 
+    public class ForgotPasswordRequestDto
+    {
+        public string Email { get; set; }
+    }
+
+
 
 
     #endregion
@@ -76,14 +84,23 @@ namespace PlatformAPI.Controllers.Users
 
         private readonly AuthService _authService;
 
+        private readonly EmailService _emailService;
+
+        private readonly OrganizationSettings _organizationSettings;
+
         private readonly ILogger<SignInController> _logger;
 
-        public UsersController(AppDbContext context, AuthService authService, ILogger<SignInController> logger)
+        public UsersController(AppDbContext context, AuthService authService,
+            EmailService emailService, IOptions<OrganizationSettings> organizationSettings,
+            ILogger<SignInController> logger)
         {
             _context = context;
             _authService = authService;
+            _emailService = emailService;
+            _organizationSettings = organizationSettings.Value;
             _logger = logger;
         }
+
 
         #region Get Functions
 
@@ -488,7 +505,88 @@ namespace PlatformAPI.Controllers.Users
             }
         }
 
+        [HttpPost("forgot-password")]
+        public async Task<IActionResult> ForgotPassword([FromBody] ForgotPasswordRequestDto dto)
+        {
+            try
+            {
+                // 1. Look up user by email
+                var user = await _context.Users
+                    .FirstOrDefaultAsync(u => u.Email == dto.Email);
 
+                if (user != null)
+                {
+                    // 2. Create a new forgot password request
+                    var request = new ForgotPasswordRequest
+                    {
+                        UserId = user.Id,
+                        Token = Guid.NewGuid(),
+                        Updated = false,
+                        ExpiresAt = DateTime.UtcNow.AddHours(24)
+                    };
+
+                    _context.ForgotPasswordRequests.Add(request);
+                    await _context.SaveChangesAsync();
+
+                    // (Optional) send email here
+                    SendEmail(user.FirstName, user.Email, request.Token.ToString());
+                }
+
+                // 3. ALWAYS return success — even if user not found
+                return Ok(new
+                {
+                    success = true,
+                    message = "If an account exists with this email, a reset link has been sent."
+                });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new
+                {
+                    success = false,
+                    message = "An error occurred while processing your request."
+                });
+            }
+        }
+
+
+
+        #endregion
+
+        #region Auxilliary Functions
+
+        private void SendEmail(string FirstName, string Email, string Token)
+        {
+
+            try
+            {
+                string subject = "Reset Your Password – Secure Your Account";
+                string OrganizationName = _organizationSettings.OrganizatioName;
+                string AdminEmail = _emailService.AdminEmail;
+                string passwordResetUrl = _organizationSettings.OrganizationUrl + "/account/resetpassword/" + Token;
+
+                string body = @"    Hi " + FirstName + @", 
+
+                                <br/<br/><br/>We received a request to reset your password for " + OrganizationName + @". Click the link below to reset your password:  
+
+                                <br/<br/><br/>🔗 **Reset Password:** " + passwordResetUrl + @" 
+
+                                <br/<br/><br/>If you did not request this change, you can ignore this email—your password will remain unchanged. For security reasons, this reset link will expire in **24 hours**.  
+
+                                <br/<br/><br/>Need help? Contact our support team at " + AdminEmail + @".  
+
+                                <br/<br/><br/>Thanks,  
+                                <br/<br/><br/>" + OrganizationName + @" Team  ";
+
+                string error = _emailService.SendEmail(Email.Trim(), subject, body);
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+        }
         #endregion
 
 

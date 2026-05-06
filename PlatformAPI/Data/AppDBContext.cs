@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿
+using Microsoft.EntityFrameworkCore;
 using PlatformAPI.Models.Quizzes;
 using PlatformAPI.Models.StudentQuizzes;
 using PlatformAPI.Models.Subjects;
@@ -27,7 +28,9 @@ namespace PlatformAPI.Data
         public DbSet<UserType> UserTypes { get; set; }
 
         public DbSet<LoginAttempt> LoginAttempts { get; set; }
-        
+
+        public DbSet<ForgotPasswordRequest> ForgotPasswordRequests { get; set; }
+
         public DbSet<Quiz> Quizzes { get; set; }
 
         public DbSet<Question> Questions { get; set; }
@@ -128,6 +131,7 @@ namespace PlatformAPI.Data
             modelBuilder.Entity<AnswerChoice>()
                 .Property(ac => ac.Description)
                 .HasColumnType("varchar(255)");
+
 
 
             //Set complex primary keys

@@ -60,8 +60,12 @@ function ChangePasswordPage() {
             }
 
             // SUCCESS
-            setBanner("Password updated successfully!");
-            navigate("/dashboard");
+            if (data.success) {
+                setIsSaving(false);
+                setBanner("Password updated successfully!");
+                navigate("/dashboard");
+            }
+
         } catch (err) {
             setIsSaving(false);
             setBanner("An unexpected error occurred.");

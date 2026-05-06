@@ -47,6 +47,7 @@ var appBehavior = builder.Configuration.Get<AppBehaviorSettings>();
 builder.Services.Configure<OrganizationSettings>(
     builder.Configuration.GetSection("OrganizationSettings")
 );
+//builder.Services.AddSingleton<EmailService>();
 
 // -------------------------
 // Services
@@ -58,6 +59,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<OrganizationContext>();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<AuthService>();
+builder.Services.AddScoped<EmailService>();
 builder.Services.AddScoped<IQuestionsRepository, QuestionsRepository>();
 
 builder.Services.AddScoped<ILoginAttemptRepository, LoginAttemptRepository>();
