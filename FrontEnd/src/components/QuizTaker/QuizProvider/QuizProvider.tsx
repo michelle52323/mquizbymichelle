@@ -217,11 +217,11 @@ export default function QuizProvider({ children }: { children: ReactNode }) {
 
 
     if (!isLoaded) {
-        return <Loader message="Loading quiz..." />;
+        return <Loader message="Loading quiz ..." />;
     }
 
 
-    if (auth === null) return <div>Loading quiz...</div>;
+    if (auth === null) return <div><Loader message="Loading quiz ..." /></div>;
     if (!auth.auth) return null;
 
     return (

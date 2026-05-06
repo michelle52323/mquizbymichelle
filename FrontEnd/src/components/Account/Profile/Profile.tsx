@@ -6,6 +6,7 @@ import { Dropdown } from '../../../components/UserControls/Dropdown/Dropdown';
 import TextboxUnique from '../../UserControls/TextboxUnique/TextboxUnique';
 import { checkEmailForProfile } from '../../UserControls/TextboxUnique/uniquevalidation';
 import CheckAuth from '../../../components/Account/CheckAuth';
+import Loader from '../../UserControls/Loader/Loader';
 
 import ButtonGrid from '../../../components/UserControls/ButtonGrid/ButtonGrid';
 
@@ -355,7 +356,7 @@ const Profile: React.FC = () => {
         })();
     }, []);
 
-    if (loading) return <div>Loading profile...</div>;
+    if (loading) return <div><Loader message = "Loading profile ..." /></div>;
     if (error) return <div className="error-message">{error}</div>;
 
 

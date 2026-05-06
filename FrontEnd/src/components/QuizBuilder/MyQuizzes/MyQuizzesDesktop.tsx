@@ -6,6 +6,7 @@ import '../../../grid-layout.css';
 import SortableQuizItem from './SortableQuizItem';
 const API_BASE = getApiBaseUrl();
 import { TouchSensor } from '@dnd-kit/core';
+import Loader from '../../UserControls/Loader/Loader';
 
 import {
     DndContext,
@@ -44,6 +45,7 @@ const MyQuizzesDesktop: React.FC = () => {
 
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [quizToDelete, setQuizToDelete] = useState<{ id: number; name: string } | null>(null);
+    const [isLoading, setIsLoading] = useState(true);
 
 
     const openDeleteModal = (quiz: { id: number; name: string }) => {
@@ -65,14 +67,17 @@ const MyQuizzesDesktop: React.FC = () => {
 
     useEffect(() => {
         const fetchQuizzes = async () => {
+            setIsLoading(true);
             const response = await fetch(`${API_BASE}/api/MyQuizzes/getQuizzes`, {
                 credentials: 'include',
             });
             if (response.ok) {
                 const data = await response.json();
                 setQuizzes(data);
+                setIsLoading(false);
             } else {
                 console.error('Failed to fetch quizzes');
+                setIsLoading(false);
             }
         };
 
@@ -144,7 +149,11 @@ const MyQuizzesDesktop: React.FC = () => {
         setModalIsOpen(false);
     };
 
-    
+    if (isLoading) {
+        return (
+            <Loader message="Loading quizzes ..." />
+        );
+    }
 
 
     return (
@@ -153,7 +162,7 @@ const MyQuizzesDesktop: React.FC = () => {
 
             <div className="content-inner-desktop">
 
-                {quizzes.length === 0 ? (
+                {quizzes.length === 0 && !isLoading ? (
                     <div className="empty-grid">No quizzes found. Start by creating one.</div>
                 ) : (
                     <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>

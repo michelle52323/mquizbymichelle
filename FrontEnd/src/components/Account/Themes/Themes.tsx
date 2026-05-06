@@ -4,6 +4,7 @@ import CheckAuth from '../../../components/Account/CheckAuth';
 import { getApiBaseUrl } from '../../../helpers/config';
 import { Dropdown } from "../../UserControls/Dropdown/Dropdown";
 import ButtonGrid from "../../UserControls/ButtonGrid/ButtonGrid";
+import Loader from '../../UserControls/Loader/Loader';
 
 const hexToRgba = (hex: string, alpha = 1): string => {
     const r = parseInt(hex.slice(1, 3), 16);
@@ -44,6 +45,7 @@ const ThemeSelectorPage: React.FC = () => {
     const [selectedTheme, setSelectedTheme] = useState<string>("1");
     const [themes, setThemes] = useState<ThemeOption[]>([]);
     const [saveDisabled, setSaveDisabled] = useState(true);
+    const [isLoading, setIsLoading] = useState(true);
 
     //const [userSaved, setUserSaved] = useState(false);
     const userSavedRef = React.useRef(false);
@@ -80,16 +82,41 @@ const ThemeSelectorPage: React.FC = () => {
 
     }, [auth]);
 
+    // useEffect(() => {
+    //     setIsLoading(true);
+    //     fetch(`${API_BASE}/api/theme/active`, {
+    //         credentials: "include"
+    //     })
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             setThemes(data.map(g => ({
+    //                 id: g.id.toString(),
+    //                 text: g.description
+    //             })));
+    //         });
+
+    //     //setIsLoading(false);
+    // }, []);
     useEffect(() => {
+        setIsLoading(true);
+
         fetch(`${API_BASE}/api/theme/active`, {
             credentials: "include"
         })
             .then(res => res.json())
             .then(data => {
-                setThemes(data.map(g => ({
-                    id: g.id.toString(),
-                    text: g.description
-                })));
+                setThemes(
+                    data.map(g => ({
+                        id: g.id.toString(),
+                        text: g.description
+                    }))
+                );
+
+                // Delay turning off loading
+                // setTimeout(() => {
+                    
+                // }, 2000);
+                setIsLoading(false);
             });
     }, []);
 
@@ -310,6 +337,7 @@ const ThemeSelectorPage: React.FC = () => {
                                     <div className="form-element d-flex">
                                         <div className="dropdown-holder">
                                             <Dropdown
+                                                isLoading={isLoading}
                                                 options={themes}
                                                 selectedId={selectedTheme}
                                                 onSelect={handleSelect}

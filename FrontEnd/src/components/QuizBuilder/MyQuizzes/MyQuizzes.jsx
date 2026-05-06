@@ -6,6 +6,7 @@ import QuizListMobile from './MyQuizzesMobile';
 import QuizListDesktop from './MyQuizzesDesktop';
 import ButtonGrid from '../../UserControls/ButtonGrid/ButtonGrid';
 import Icon from '../../UserControls/Icons/icons';
+import Loader from '../../UserControls/Loader/Loader';
 
 function MyQuizzes() {
     const navigate = useNavigate();
@@ -42,7 +43,7 @@ function MyQuizzes() {
     }, [auth, navigate, setTitle]);
 
 
-    if (auth === null) return <div>Loading dashboard...</div>;
+    if (auth === null) return <div><Loader message = "Loading quizzes ..." /></div>;
     if (!auth.auth) return null;
 
     //  Device-based layout rendering

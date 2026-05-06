@@ -6,6 +6,8 @@ import { getApiBaseUrl } from '../../../helpers/config';
 import CheckAuth from '../../../components/Account/CheckAuth';
 import Icon from '../../UserControls/Icons/icons'
 import ButtonGrid from "../../UserControls/ButtonGrid/ButtonGrid";
+import Loader from '../../UserControls/Loader/Loader';
+
 import type { Quiz } from 'src/types/Quiz/Quiz';
 import type { Question } from 'src/types/Questions/Question';
 import type { AnswerChoice } from 'src/types/AnswerChoices/AnswerChoice';
@@ -165,6 +167,7 @@ export default function Review() {
         if (!id) return;
 
         const fetchAllData = async () => {
+            setLoading(true);
             try {
                 // 1. Fetch all questions
                 const qResponse = await fetch(
@@ -212,6 +215,7 @@ export default function Review() {
 
                         } catch (err) {
                             console.error(`Error fetching answer choices for question ${q.id}`, err);
+                            setLoading(false);
                             return { ...q, answerChoices: [] };
                         }
                     })
@@ -221,8 +225,9 @@ export default function Review() {
                 //console.log("Final Questions:", enrichedQuestions);
 
                 setQuestions(enrichedQuestions);
-
+                setLoading(false);
             } catch (error) {
+                setLoading(false);
                 console.error("Error fetching questions or answer choices:", error);
             }
         };
@@ -335,9 +340,13 @@ export default function Review() {
     }
 
 
-
+    if(loading){
+        return(
+            <Loader message = "Loading report ..." />
+        );
+    }
     function renderReport() {
-        if (!report || report.length === 0) {
+        if ((!report || report.length === 0) && !loading) {
             return (
                 <div >
                     <div className="empty-grid">No questions found.</div>

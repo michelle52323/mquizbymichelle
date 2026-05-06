@@ -12,6 +12,7 @@ import ProgressBar from '../../UserControls/ProgressBar/ProgressBar';
 
 import ButtonGrid from '../../UserControls/ButtonGrid/ButtonGrid';
 import Icon from '../../UserControls/Icons/icons';
+import Loader from '../../UserControls/Loader/Loader';
 
 const API_BASE = getApiBaseUrl();
 
@@ -130,7 +131,7 @@ function Questions() {
         }
     }, [auth, navigate, quiz.name, setTitle]);
 
-    if (auth === null) return <div>Loading questions...</div>;
+    if (auth === null) return <div><Loader message = "Loading questions ..." /></div>;
     if (!auth.auth) return null;
 
     return (

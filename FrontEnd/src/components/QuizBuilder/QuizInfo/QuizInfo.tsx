@@ -8,6 +8,7 @@ import type { LayoutContext } from '../../Layout';
 import Icon from '../../UserControls/Icons/icons';
 import ButtonGrid from '../../UserControls/ButtonGrid/ButtonGrid';
 import ProgressBar from '../../UserControls/ProgressBar/ProgressBar';
+import Loader from '../../UserControls/Loader/Loader';
 
 const API_BASE = getApiBaseUrl();
 
@@ -69,7 +70,7 @@ const QuizInfo: React.FC = () => {
         }
     }, [location.state?.banner, setBanner, navigate, location.pathname]);
 
-    
+
 
     const [auth, setAuth] = useState<AuthResult | null>(null);
     const [subjects, setSubjects] = useState<Subject[]>([]);
@@ -80,6 +81,7 @@ const QuizInfo: React.FC = () => {
     });
     const [errors, setErrors] = useState<{ quiz: Partial<Record<keyof QuizForm, string>> }>({ quiz: {} });
     const [selectedCategory, setSelectedCategory] = useState<{ id: string; text: string } | null>(null);
+    const [subjectsLoading, setSubjectsLoading] = useState(true);
 
     const categoryList = useMemo(() => {
         return subjects.map(s => ({ id: s.id.toString(), text: s.desc }));
@@ -106,12 +108,54 @@ const QuizInfo: React.FC = () => {
 
     }, [auth, isEditMode, navigate]);
 
+    // useEffect(() => {
+    //     setSubjectsLoading(true);
+    //     fetch(`${API_BASE}/api/Subjects/dropdown`, { credentials: 'include' })
+    //         .then(res => res.ok ? res.json() : Promise.reject('Failed to fetch subjects'))
+    //         .then((data: Subject[]) => setSubjects(data))
+    //         .catch(err => console.error(err));
+    // }, []);
     useEffect(() => {
+        setSubjectsLoading(true);
+
         fetch(`${API_BASE}/api/Subjects/dropdown`, { credentials: 'include' })
             .then(res => res.ok ? res.json() : Promise.reject('Failed to fetch subjects'))
-            .then((data: Subject[]) => setSubjects(data))
-            .catch(err => console.error(err));
+            .then(result => {
+                // result should be: { success: true, data: [...] }
+                if (result.success) {
+                    setSubjects(result.data);
+                    // setTimeout(() => {
+                    //     setSubjectsLoading(false);
+                    // }, 500);
+                    //setSubjectsLoading(false);
+
+                } else {
+                    console.error("API returned success=false");
+                }
+
+                // turn off loading AFTER processing
+
+            })
+            .catch(err => {
+                console.error(err);
+                setSubjectsLoading(false);
+            });
     }, []);
+
+    useEffect(() => {
+        if (subjects.length > 0 ) {
+            if (!isEditMode){
+                setSubjectsLoading(false);
+            }else if(quiz.subjectId != "" && quiz.subjectId != null) {
+                setSubjectsLoading(false);
+            }
+            
+        }
+    }, [subjects, quiz]);
+
+
+
+
 
     useEffect(() => {
         if (!id || subjects.length === 0 || !auth?.claims?.UserId) return;
@@ -283,7 +327,7 @@ const QuizInfo: React.FC = () => {
         }
     };
 
-    if (auth === null) return <div>Loading dashboard...</div>;
+    if (auth === null) return <div><Loader message="Loading quiz info ..." /></div>;
     if (!auth.auth) return null;
 
     const isDropdownReady = categoryList.length > 0 && quiz.subjectId !== '';
@@ -342,6 +386,7 @@ const QuizInfo: React.FC = () => {
                                     <br />
                                 </div>
                                 <Dropdown
+                                    isLoading={subjectsLoading}
                                     options={categoryList}
                                     selectedId={quiz.subjectId}
                                     onSelect={(id, text) => {

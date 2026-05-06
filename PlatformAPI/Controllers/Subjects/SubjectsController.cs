@@ -33,7 +33,8 @@ namespace PlatformAPI.Controllers.Subjects
                 })
                 .ToList();
 
-            return Ok(subjects);
+            return Ok(new { success = true, data = subjects });
+
         }
     }
 }

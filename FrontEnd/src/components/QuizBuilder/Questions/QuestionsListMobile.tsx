@@ -5,6 +5,7 @@ import Modal from 'react-modal';
 import { useOutletContext } from 'react-router-dom';
 import { renderMathInHtml } from '../../../helpers/mathHelper'
 import SortableQuestionItem from './SortableQuestionItem';
+import Loader from '../../UserControls/Loader/Loader';
 
 
 import {
@@ -58,6 +59,7 @@ function QuestionsListMobile({ quizId }: Props) {
 
     const [questionToDelete, setQuestionToDelete] = useState<Question | null>(null);
     const [questionIndexToDelete, setQuestionIndexToDelete] = useState<number | null>(null);
+    const [isLoading, setIsLoading] = useState(true);
 
     const openDeleteModal = (question: Question, index: number) => {
         setQuestionToDelete(question);
@@ -80,6 +82,7 @@ function QuestionsListMobile({ quizId }: Props) {
 
     useEffect(() => {
         async function fetchQuestions() {
+            setIsLoading(true);
             const response = await fetch(
                 `${API_BASE}/api/Questions/${quizId}/questions`,
                 { credentials: "include" }
@@ -95,8 +98,10 @@ function QuestionsListMobile({ quizId }: Props) {
                 }));
 
                 setQuestions(transformed);
+                setIsLoading(false);
             } else {
                 console.error("Failed to fetch questions");
+                setIsLoading(false);
             }
         }
 
@@ -201,12 +206,18 @@ function QuestionsListMobile({ quizId }: Props) {
         setModalIsOpen(false);
     };
 
+    if (isLoading) {
+        return (
+            <Loader message="Loading questions ..." />
+        );
+    }
+
     return (
         <div className="pt-3">
 
             <div className="content-inner-desktop">
 
-                {questions.length === 0 ? (
+                {questions.length === 0 && !isLoading ? (
                     <div className="empty-grid">No questions found. Start by creating one.</div>
                 ) : (
                     <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>

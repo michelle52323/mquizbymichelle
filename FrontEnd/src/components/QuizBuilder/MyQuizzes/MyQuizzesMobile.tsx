@@ -8,6 +8,7 @@ const API_BASE = getApiBaseUrl();
 import { TouchSensor } from '@dnd-kit/core';
 import { isDevUseMockLogin, isMobileTouchDeviceDev, isMobileTouchDevice } from '../../../helpers/config';
 import MobileQuizActionsMenu from '../../UserControls/SubMenus/MyQuizzes/MobileQuizActionsMenu';
+import Loader from '../../UserControls/Loader/Loader';
 
 import {
     DndContext,
@@ -53,7 +54,7 @@ const MyQuizzesMobile: React.FC = () => {
     //const [openMenuId, setOpenMenuId] = useState<number | null>(null);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isClosing, setIsClosing] = useState(false);
-
+    const [isLoading, setIsLoading] = useState(true);
 
 
     const openDeleteModal = (quiz: { id: number; name: string }) => {
@@ -74,7 +75,7 @@ const MyQuizzesMobile: React.FC = () => {
     );
 
     useEffect(() => {
-
+        setIsLoading(true);
         const mode = import.meta.env.VITE_MODE;
         const url = isDevUseMockLogin() && mode == "dev"
             ? `${API_BASE}/api/MyQuizzes/getQuizzesMock`
@@ -87,8 +88,10 @@ const MyQuizzesMobile: React.FC = () => {
             if (response.ok) {
                 const data = await response.json();
                 setQuizzes(data);
+                setIsLoading(false);
             } else {
                 console.error('Failed to fetch quizzes');
+                setIsLoading(false);
             }
         };
 
@@ -207,7 +210,11 @@ const MyQuizzesMobile: React.FC = () => {
         }, 150); // match slideDown duration
     };
 
-
+    if (isLoading) {
+        return (
+            <Loader message="Loading quizzes ..." />
+        );
+    }
 
     return (
 
@@ -215,7 +222,7 @@ const MyQuizzesMobile: React.FC = () => {
 
             <div className="content-inner-desktop">
 
-                {quizzes.length === 0 ? (
+                {quizzes.length === 0 && !isLoading ? (
                     <div className="empty-grid">No quizzes found. Start by creating one.</div>
                 ) : (
                     <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>

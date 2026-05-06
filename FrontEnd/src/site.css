@@ -53,29 +53,59 @@
     --textBoxBorderColorSelected: #101010;
     --passwordIconColor: #0018a1;
 
-     --spinnerBorderColor: rgba(0, 0, 0, 0.4);
-     --spinnerTopColor: #4a90e2;
+    --spinnerBorderColor: rgba(0, 0, 0, 0.4);
+    --spinnerTopColor: #4a90e2;
+
+    --spinnerButtonThemedBorderColor: rgba(0, 0, 0, 0.4);
+    --spinnerButtonThemedTopColor: #4a90e2;
 }
 
-.theme-1{
---spinnerBorderColor: rgba(0, 0, 0, 0.15);
---spinnerTopColor: #4a90e2;
+.theme-1 {
+    --spinnerBorderColor: rgba(0, 0, 0, 0.15);
+    --spinnerTopColor: #4a90e2;
+
+    --spinnerButtonThemedBorderColor: rgba(0, 0, 0, 0.15);
+    --spinnerButtonThemedTopColor: #4a90e2;
+}
+
+.theme-4 {
+    --spinnerBorderColor: rgba(0, 0, 0, 0.15);
+    --spinnerTopColor: #4a90e2;
+
+    --spinnerButtonThemedBorderColor: rgba(0, 0, 0, 0.15);
+    --spinnerButtonThemedTopColor: #4a90e2;
 
 }
 
-.theme-4{
---spinnerBorderColor: rgba(0, 0, 0, 0.15);
---spinnerTopColor: #4a90e2;
+.theme-3 {
+    --spinnerBorderColor: rgba(255, 255, 255, 0.35);
+    --spinnerTopColor: #00b0a0;
 
+    --spinnerButtonThemedBorderColor: rgba(0, 0, 0, 0.15);
+    --spinnerButtonThemedTopColor: #4a90e2;
 }
 
-.theme-3{
-     --spinnerBorderColor: rgba(255, 255, 255, 0.35);
-     --spinnerTopColor: #00b0a0;
+.theme-5 {
+    --spinnerBorderColor: rgba(255, 255, 255, 0.35);
+    --spinnerTopColor: #00bf73;
+
+    --spinnerButtonThemedBorderColor: rgba(0, 0, 0, 0.15);
+    --spinnerButtonThemedTopColor: #4a90e2;
 }
-.theme-5{
-     --spinnerBorderColor: rgba(255, 255, 255, 0.35);
-     --spinnerTopColor: #00bf73;
+
+.theme-6 {
+    --spinnerButtonThemedBorderColor: rgba(0, 0, 0, 0.15);
+    --spinnerButtonThemedTopColor: #4a90e2;
+}
+
+.theme-7 {
+    --spinnerButtonThemedBorderColor: rgba(0, 0, 0, 0.15);
+    --spinnerButtonThemedTopColor: #4a90e2;
+}
+
+.theme-8 {
+    --spinnerButtonThemedBorderColor: rgba(0, 0, 0, 0.15);
+    --spinnerButtonThemedTopColor: #4a90e2;
 }
 
 .theme8 {
@@ -1285,9 +1315,18 @@ a.button-tiny-ios {
     margin-bottom: 16px;
 }
 
-.spinner-dark{
+.spinner-dark {
     border: 4px solid rgba(0, 0, 0, 0.4);
     border-top-color: #6aa0f2;
+}
+
+.spinner-button-themed {
+    /* border: 4px solid var(--spinnerButtonThemedBorderColor);
+    border-top-color: var(--spinnerButtonThemedTopColor); */
+    border: 4px solid rgba(0, 0, 0, 0.4);
+    border-top-color: #8ac0f2;
+    /* border: 4px solid var(--spinnerBorderColor);
+    border-top-color: var(--spinnerTopColor); */
 }
 
 .spinner.small {
