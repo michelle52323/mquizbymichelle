@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useNavigate, useLocation, useParams, useOutletContext } from "react-router-dom";
 import ButtonGrid from '../../../UserControls/ButtonGrid/ButtonGrid';
 import Icon from '../../../UserControls/Icons/icons';
+import CheckAuth from '../../../../components/Account/CheckAuth';
 import ProgressBar from '../../../UserControls/ProgressBar/ProgressBar';
 import type { LayoutContext } from '../../../../components/Layout';
 import { getApiBaseUrl, isMobileTouchDevice } from '../../../../helpers/config';
@@ -11,6 +12,7 @@ import { renderMathInHtml } from '../../../../helpers/mathHelper'
 import Modal from 'react-modal';
 import EditPageToolbar from '../../../UserControls/EditPageToolbar/EditPageToolbar';
 import AnswerChoices from '../AnswerChoices/AnswerChoices';
+import Loader from '../../../UserControls/Loader/Loader';
 
 import { normalizeSortOrder } from '../../../../helpers/sortingHelpers';
 
@@ -29,7 +31,17 @@ import { InlineMathNode } from "../../../../extensions/InlineMathNode"
 
 Modal.setAppElement('#root'); // for accessibility
 
+interface Claims {
+    FirstName?: string;
+    UserId?: string;
+    [key: string]: string | undefined;
+}
 
+interface AuthResult {
+    auth: boolean;
+    username?: string;
+    claims?: Claims;
+}
 
 type EditProps = {
     mode: "add" | "edit";
@@ -47,6 +59,8 @@ export const Edit: React.FC<EditProps> = ({ mode, quizId }) => {
     const navigate = useNavigate();
     const { id: questionId } = useParams();
     const API_BASE = getApiBaseUrl();
+
+    const [auth, setAuth] = useState<AuthResult | null>(null);
 
     const [resolvedQuizId, setResolvedQuizId] = useState(null);
     const [previousQuestionId, setPreviousQuestionId] = useState<number | null>(null);
@@ -114,6 +128,27 @@ export const Edit: React.FC<EditProps> = ({ mode, quizId }) => {
         }
     }, [location.state?.banner, setBanner, navigate, location.pathname]);
 
+    useEffect(() => {
+        CheckAuth().then(setAuth);
+    }, []);
+
+    useEffect(() => {
+        if (!auth) return;
+
+        if (!auth.auth) {
+            navigate('/signin');
+            return;
+        }
+
+        const role = auth.claims?.['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'];
+        if (role !== 'Instructor') {
+            navigate('/dashboard');
+            return;
+        }
+
+
+    }, [auth, navigate]);
+
     const [position, setPosition] = useState({
         quizId: 0,
         totalQuestions: 0,
@@ -137,13 +172,17 @@ export const Edit: React.FC<EditProps> = ({ mode, quizId }) => {
 
     // Fetch question position
     useEffect(() => {
-        if (!questionId) return;
+        if (!questionId) {
+            //navigate("/dashboard");
+            return;
+        }
 
         const fetchPosition = async () => {
             try {
                 const response = await fetch(`${API_BASE}/api/Questions/question/${questionId}/position`);
                 if (!response.ok) {
                     console.error("Failed to load question position");
+                    //navigate("/dashboard");
                     return;
                 }
 
@@ -199,6 +238,7 @@ export const Edit: React.FC<EditProps> = ({ mode, quizId }) => {
 
                 if (!response.ok) {
                     console.error("Failed to load quiz info");
+                    //navigate("/dashboard");
                     return;
                 }
 
@@ -231,6 +271,7 @@ export const Edit: React.FC<EditProps> = ({ mode, quizId }) => {
                 if (!response.ok) {
                     console.error("Failed to load question payload");
                     return;
+                    //navigate("/dashboard");
                 }
 
                 const data = await response.json();
@@ -1000,7 +1041,8 @@ export const Edit: React.FC<EditProps> = ({ mode, quizId }) => {
     }, [initialHtml, html, initialAnswerChoices, answerChoices]);
 
 
-
+    if (auth === null) return <div><Loader message="Loading question info ..." /></div>;
+    if (!auth.auth) return null;
 
     return (
         <>

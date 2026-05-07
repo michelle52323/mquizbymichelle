@@ -5,6 +5,7 @@ import { useState } from 'react';
 import Icon from '../UserControls/Icons/icons';
 
 import CheckAuth from '../../components/Account/CheckAuth';
+import Loader from '../UserControls/Loader/Loader';
 
 function Dashboard() {
     const navigate = useNavigate();
@@ -55,7 +56,7 @@ function Dashboard() {
         }
     }, [location.state?.banner, setBanner, navigate, location.pathname]);
 
-    if (auth === null) return <div>Loading quizzes...</div>;
+    if (auth === null) return <div><Loader message="Loading dashboard ..." /></div>;
     if (!auth.auth) return null; // redirect already triggered
 
     {/* Starter kit welcome message */ }

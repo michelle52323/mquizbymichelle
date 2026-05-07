@@ -124,10 +124,6 @@ const QuizInfo: React.FC = () => {
                 // result should be: { success: true, data: [...] }
                 if (result.success) {
                     setSubjects(result.data);
-                    // setTimeout(() => {
-                    //     setSubjectsLoading(false);
-                    // }, 500);
-                    //setSubjectsLoading(false);
 
                 } else {
                     console.error("API returned success=false");

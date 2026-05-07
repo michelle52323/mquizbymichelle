@@ -166,13 +166,6 @@ const Profile: React.FC = () => {
             return;
         }
 
-        const role = auth.claims?.['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'];
-        if (role !== 'Instructor') {
-            navigate('/dashboard');
-            return;
-        }
-
-
     }, [auth, navigate]);
 
     // -----------------------------

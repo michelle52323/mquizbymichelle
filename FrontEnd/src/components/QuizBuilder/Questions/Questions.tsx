@@ -62,7 +62,10 @@ function Questions() {
     }, [location.state?.banner, setBanner, navigate, location.pathname]);
 
     const { id: quizId } = useParams();
-    if (!quizId) return null;
+    if (!quizId) {
+        navigate("/dashboard");
+    }
+
 
     // Enforce quizId presence
     useEffect(() => {
@@ -131,7 +134,7 @@ function Questions() {
         }
     }, [auth, navigate, quiz.name, setTitle]);
 
-    if (auth === null) return <div><Loader message = "Loading questions ..." /></div>;
+    if (auth === null) return <div><Loader message="Loading questions ..." /></div>;
     if (!auth.auth) return null;
 
     return (

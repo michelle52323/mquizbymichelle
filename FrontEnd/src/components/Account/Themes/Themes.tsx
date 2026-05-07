@@ -64,6 +64,16 @@ const ThemeSelectorPage: React.FC = () => {
         hydrateAuth();
     }, []);
 
+    useEffect(() => {
+        if (!auth) return;
+
+        if (!auth.auth) {
+            navigate('/signin');
+            return;
+        }
+
+    }, [auth, navigate]);
+
     //Set initial and selected page on page load
     useEffect(() => {
         if (!auth) return;
@@ -114,7 +124,7 @@ const ThemeSelectorPage: React.FC = () => {
 
                 // Delay turning off loading
                 // setTimeout(() => {
-                    
+
                 // }, 2000);
                 setIsLoading(false);
             });
@@ -312,7 +322,8 @@ const ThemeSelectorPage: React.FC = () => {
         };
     }, [selectedTheme, initialTheme]);
 
-
+    if (auth === null) return <div><Loader message="Loading theme selector ..." /></div>;
+    if (!auth.auth) return null;
 
     return (
         <form className="page-container ">

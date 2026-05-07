@@ -111,7 +111,7 @@
               "RelativeDocumentMoniker": "Controllers\\Subjects\\SubjectsController.cs",
               "ToolTip": "C:\\Users\\miche\\Documents\\Websites\\React.js\\Quiz-Builder\\PlatformAPI\\Controllers\\Subjects\\SubjectsController.cs",
               "RelativeToolTip": "Controllers\\Subjects\\SubjectsController.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAYwCQAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAYwBIAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-06T18:53:53.129Z",
               "EditorCaption": ""
@@ -162,8 +162,7 @@
               "RelativeToolTip": "Controllers\\Users\\UsersController.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-06T00:51:36.417Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-06T00:51:36.417Z"
             },
             {
               "$type": "Document",

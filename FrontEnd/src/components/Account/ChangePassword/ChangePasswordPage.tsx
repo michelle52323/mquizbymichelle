@@ -8,6 +8,7 @@ import { checkEmailForProfile } from '../../UserControls/TextboxUnique/uniqueval
 import CheckAuth from '../CheckAuth';
 import ChangePassword from '../../UserControls/ChangePassword/ChangePassword';
 import { ChangePasswordModel } from '../../UserControls/ChangePassword/ChangePassword';
+import Loader from '../../UserControls/Loader/Loader';
 
 import ButtonGrid from '../../UserControls/ButtonGrid/ButtonGrid';
 
@@ -89,14 +90,12 @@ function ChangePasswordPage() {
             return;
         }
 
-        const role = auth.claims?.['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'];
-        if (role !== 'Instructor') {
-            navigate('/dashboard');
-            return;
-        }
 
 
     }, [auth, navigate]);
+
+    if (auth === null) return <div><Loader message="Loading change password panel ..." /></div>;
+    if (!auth.auth) return null;
 
     return (
         <>
