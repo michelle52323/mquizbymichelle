@@ -285,7 +285,8 @@ a:focus {
     background-image: linear-gradient(45deg, var(--contentBackColor), var(--contentBackColorGradient));
     min-width: 380px;
     width: 380px;
-
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
 }
 
 
@@ -1392,4 +1393,12 @@ a.button-tiny-ios {
 
 .mobile-bottom-sheet.closing {
     animation: slideDown 0.15s ease-in forwards;
+}
+
+
+
+@media (max-width: 768px) {
+    .hide-small {
+        display: none;
+    }
 }

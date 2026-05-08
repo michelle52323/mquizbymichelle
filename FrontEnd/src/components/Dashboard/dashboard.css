@@ -1,0 +1,21 @@
+.dashboard-item {
+    font-size: 20px;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px; /* Mobile baseline */
+}
+
+.dashboard-container{
+    padding-bottom: 30px;
+}
+
+/* Wider screens get more breathing room */
+@media (min-width: 768px) {
+    .dashboard-item {
+        min-height: 248px;
+    }
+
+    .dashboard-container {
+        padding: 0px;
+    }
+}
