@@ -247,7 +247,7 @@ const MyQuizzesMobile: React.FC = () => {
                             </div>
 
                             {/* Rows */}
-                            <div className="grid-overflow-box gof-tall" id="sortable">
+                            <div className="grid-overflow-box gof-editable-mobile" id="sortable">
                                 {quizzes.map((quiz, i) => (
                                     <SortableQuizItem key={quiz.id} quiz={quiz} index={i} isMobile={true}
                                         openDeleteModal={() => openDeleteModal(quiz)}

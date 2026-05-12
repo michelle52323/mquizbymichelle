@@ -249,6 +249,10 @@
     height: 410px;
 }
 
+.gof-editable-mobile{
+    height: 410px;
+}
+
 .gof-short{
     min-height: calc(var(--vh) - 450px);
 }

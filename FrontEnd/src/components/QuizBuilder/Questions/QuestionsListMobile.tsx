@@ -248,7 +248,7 @@ function QuestionsListMobile({ quizId }: Props) {
                             </div>
 
                             {/* Rows */}
-                            <div className="grid-overflow-box gof-tall" id="sortable">
+                            <div className="grid-overflow-box gof-editable-mobile" id="sortable">
                                 <div id="questions-list-container">
                                     {questions.map((question, i) => (
                                         <SortableQuestionItem

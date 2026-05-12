@@ -38,11 +38,13 @@
 }
 
 .content-holder-mobile {
-    min-height: calc(var(--vh) - 140px);
-    height: auto;
+    /* min-height: calc(var(--vh) - 140px); */
+    /* height: auto; */
     padding-bottom: 50px;
     width: 100%;
+    min-height: 540px;
 }
+
 
 .content-holder-mobile-public {
     padding-top:30px;
