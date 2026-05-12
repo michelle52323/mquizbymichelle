@@ -211,11 +211,15 @@ function QuestionsListMobile({ quizId }: Props) {
             <Loader message="Loading questions ..." />
         );
     }
+const debugBorder = { border: '1px solid red', height:'420px' };
+
+// later
+<div style={debugBorder}>Content</div>
 
     return (
         <div className="pt-3">
 
-            <div className="content-inner-desktop">
+            <div className="content-inner-desktop height-410" >
 
                 {questions.length === 0 && !isLoading ? (
                     <div className="empty-grid">No questions found. Start by creating one.</div>

@@ -340,9 +340,9 @@ export default function Review() {
     }
 
 
-    if(loading){
-        return(
-            <Loader message = "Loading report ..." />
+    if (loading) {
+        return (
+            <Loader message="Loading report ..." />
         );
     }
     function renderReport() {
@@ -353,6 +353,8 @@ export default function Review() {
                 </div>
             );
         }
+
+
 
         return (
             <div className={`grid-overflow-box ${isMobileTouchDevice() ? "gof-mobile-short" : "gof-short"}`}>
@@ -377,7 +379,7 @@ export default function Review() {
                             style={{ cursor: "pointer" }}
                         >
                             {/* ICON + QUESTION TEXT */}
-                            <div style={{ display: "flex", alignItems: "center" }}>
+                            <div style={{ display: "flex", alignItems: "center" }} >
                                 <span className="col-1"><strong>{counter}</strong></span>
                                 <span
                                     className="col-10"
@@ -465,12 +467,18 @@ export default function Review() {
 
     return (
         <div>
-            <div className={isMobileTouchDevice() ? "content-holder-mobile" : "content-holder-desktop"}>
+            <div
+                className={
+                    (isMobileTouchDevice() ? "content-holder-mobile" : "content-holder-desktop")
+                    + " height-200"
+                }
+            >
+
                 <ProgressBar />
 
                 {/* REPORT */}
                 <div className={`content-inner-desktop mt-3 ${isMobileTouchDevice() ? "grid-overflow-box" : ""}`}
->
+                >
                     {!quizIsPublished && (
                         <div className="mb-3">
                             <strong>Please review this report carefully before publishing your quiz.</strong>

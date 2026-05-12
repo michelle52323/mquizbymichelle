@@ -473,6 +473,14 @@ a:focus {
     height: 139px;
 }
 
+.height-200{
+    height: 200px
+}
+
+.height-410{
+    height: 410px;
+}
+
 .button-row-tiny {
     clear: both;
     height: 60px;
@@ -702,6 +710,26 @@ a.button-tiny-ios {
 @media (max-width: 580px) {
     .button-shrink-text {
         font-size: 11px;
+        padding-left: 3px;
+        padding-right: 3px;
+        min-height: 38px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 885px) {
+    .button-shrink-text-large {
+        font-size: 14px;
+        padding-left: 6px;
+        padding-right: 6px;
+        min-height: 38px;
+        /* match your normal button height */
+    }
+}
+
+
+@media (max-width: 580px) {
+    .button-shrink-text-large {
+        font-size: 14px;
         padding-left: 3px;
         padding-right: 3px;
         min-height: 38px;
