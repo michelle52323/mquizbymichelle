@@ -85,7 +85,7 @@ const SortableAnswerChoiceItem: React.FC<Props> = ({ answerChoice, index, onRequ
             ref={setNodeRef}
             style={style}
             {...attributes}
-            className="grid-page-row  sortable-container"
+            className="grid-page-row  sortable-container answer-choice-row"
         >
             <div className="d-flex align-items-start">
                 {/* Drag handle */}

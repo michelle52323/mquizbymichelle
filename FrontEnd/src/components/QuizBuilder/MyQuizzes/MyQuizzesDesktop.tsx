@@ -191,7 +191,7 @@ const MyQuizzesDesktop: React.FC = () => {
                             </div>
 
                             {/* Rows */}
-                            <div className="grid-overflow-box gof-tall" id="sortable">
+                            <div className="grid-overflow-box gof-editable" id="sortable">
                                 {quizzes.map((quiz, i) => (
                                     <SortableQuizItem key={quiz.id} quiz={quiz} index={i} isMobile={false} openDeleteModal={() => openDeleteModal(quiz)} />
                                 ))}

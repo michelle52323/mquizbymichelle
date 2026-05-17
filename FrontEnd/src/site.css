@@ -143,13 +143,29 @@ html {
 
 }
 
+
 body {
-    font-size: 14px;
+    font-size: 15px;
     margin-bottom: 60px;
     margin-left: 0px;
     margin-right: 0px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     color: var(--contentTextColor);
+}
+
+@supports (-webkit-touch-callout: none) {
+    body {
+        font-size: 16px;
+    }
+}
+
+/* Android Chrome (touch devices only) */
+@media (pointer: coarse) {
+    @supports not (-webkit-touch-callout: none) {
+        body {
+            font-size: 16px;
+        }
+    }
 }
 
 
@@ -491,10 +507,27 @@ label {
     min-width: 97px;
     float: left;
     color: var(--textBoxLabelColor);
-    font-size: 14px;
+    font-size: 15px;
     font-weight: bold;
     padding: 5px 0px 5px 15px;
 }
+
+
+@supports (-webkit-touch-callout: none) {
+    label {
+        font-size: 16px;
+    }
+}
+
+/* Android Chrome (touch devices only) */
+@media (pointer: coarse) {
+    @supports not (-webkit-touch-callout: none) {
+        label {
+            font-size: 16px;
+        }
+    }
+}
+
 
 .indented-content {
     padding-left: 30px;

@@ -357,7 +357,7 @@ export default function Review() {
 
 
         return (
-            <div className={`grid-overflow-box ${isMobileTouchDevice() ? "gof-mobile-short" : "gof-short"}`}>
+            <div className={`grid-overflow-box ${isMobileTouchDevice() ? "gof-mobile-short" : "gof-report"}`}>
 
                 {report.map((item, i) => {
                     const counter = i + 1;

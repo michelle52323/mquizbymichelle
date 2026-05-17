@@ -91,7 +91,32 @@
 
 /* Question and answer choice text */
 /* Wider phones and everything above */
-@media (min-width: 450px) {
+
+.student-question-text,
+.student-answer-text {
+    font-size: 15px;
+}
+
+@supports (-webkit-touch-callout: none) {
+
+    .student-question-text,
+    .student-answer-text {
+        font-size: 17px;
+    }
+}
+
+/* Android Chrome (touch devices only) */
+@media (pointer: coarse) {
+    @supports not (-webkit-touch-callout: none) {
+
+        .student-question-text,
+        .student-answer-text {
+            font-size: 17px;
+        }
+    }
+}
+
+/* @media (min-width: 450px) {
 
     .student-question-text,
     .student-answer-text {
@@ -100,14 +125,15 @@
 }
 
 /* Narrow phones */
-@media (max-width: 449.99px) {
+/* @media (max-width: 449.99px) {
 
     .student-question-text,
     .student-answer-text {
         font-size: 17px;
     }
-}
+} */
 
+*/
 
 /* Main area:  */
 .student-quiz-main {

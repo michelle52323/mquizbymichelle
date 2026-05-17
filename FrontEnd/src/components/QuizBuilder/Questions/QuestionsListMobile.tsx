@@ -240,7 +240,7 @@ const debugBorder = { border: '1px solid red', height:'420px' };
                                     <div className="row align-items-end">
                                         <div className="col-1 fw-bold">#</div>
                                         <div className="col-7 fw-bold">Description</div>
-                                        <div className="col-3 fw-bold">Question Type</div>
+                                        <div className="col-3 fw-bold">Type</div>
                                     </div>
                                 </div>
 
@@ -252,7 +252,7 @@ const debugBorder = { border: '1px solid red', height:'420px' };
                             </div>
 
                             {/* Rows */}
-                            <div className="grid-overflow-box gof-editable-mobile" id="sortable">
+                            <div className="grid-overflow-box gof-editable-mobile-short" id="sortable">
                                 <div id="questions-list-container">
                                     {questions.map((question, i) => (
                                         <SortableQuestionItem

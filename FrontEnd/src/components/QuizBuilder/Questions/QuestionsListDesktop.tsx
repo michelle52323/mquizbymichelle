@@ -248,7 +248,7 @@ function QuestionsListDesktop({ quizId }: Props) {
                             </div>
 
                             {/* Rows */}
-                            <div className="grid-overflow-box gof-tall" id="sortable">
+                            <div className="grid-overflow-box gof-editable-short" id="sortable">
                                 <div id="questions-list-container">
                                     {questions.map((question, i) => (
                                         <SortableQuestionItem
