@@ -50,7 +50,7 @@
 
             if (isProduction)
             {
-                options.Domain = ".mquizbymichelle.com";
+                options.Domain = ".mquizbymichelle.app";
             }
 
             response.Cookies.Append(key, value, options);

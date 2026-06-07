@@ -152,7 +152,7 @@ else
         options.Cookie.SameSite = SameSiteMode.None;
         options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
         //options.Cookie.Domain = "websitesbymichelle.com";
-        options.Cookie.Domain = ".mquizbymichelle.com";
+        options.Cookie.Domain = ".mquizbymichelle.app";
 
         options.Events.OnRedirectToLogin = context =>
         {
@@ -175,8 +175,8 @@ if (builder.Environment.IsDevelopment())
             policy.WithOrigins(
                 "https://www.websitesbymichelle.com",
                 "https://websitesbymichelle.com",
-                "https://www.mquizbymichelle.com",
-                "https://.mquizbymichelle.com",
+                "https://www.mquizbymichelle.app",
+                "https://.mquizbymichelle.app",
                 "https://localhost:5173",
                 "http://localhost:5173",
                 "https://localhost",
@@ -211,8 +211,8 @@ else
                 "https://localhost:5173",
                 "http://localhost:5173",
                 "https://192.168.1.10:5173",
-                "https://www.mquizbymichelle.com",
-                "https://mquizbymichelle.com",
+                "https://www.mquizbymichelle.app",
+                "https://mquizbymichelle.app",
                 "https://www.websitesbymichelle.com"
             )
             .AllowCredentials()
