@@ -215,10 +215,11 @@ function Layout({ buttonSlot, footerSlots }: LayoutProps) {
     return (
         <div className={`theme-${actualThemeId} ${pageFadeInClassName}`}>
             <div className={`page-layout page-layout-margin ${useCard ? 'page-background' : 'page-background-inner'}`}>
-                {banner ? (
-                    <FeedbackBanner message={banner} />
-                ) : (
-                    useCard && <div className="feedback-banner-placeholder" />
+                {banner && (
+                    <FeedbackBanner
+                        message={banner}
+                        onClose={() => setBanner(null)}
+                    />
                 )}
 
                 <div className={innerHeightClass}>

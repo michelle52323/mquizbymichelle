@@ -29,7 +29,7 @@ export default function FormFooterLink({ text, linkText, linkUrl }: FormFooterLi
                         onClick={() => navigate(linkUrl)}
                         style={{ cursor: "pointer" }}
                     >
-                        <span>{linkText}</span>
+                        <span>{linkText} →</span>
                     </div>
 
 

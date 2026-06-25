@@ -1,0 +1,36 @@
+.feedback-banner {
+    position: fixed;
+    right: 16px;
+    z-index: 1000; /* above layout, below modals if you have them */
+    display: flex;
+    align-items: center;
+    padding: 10px 14px;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+    /* background-color: var(--cardBackgroundColor, #fff); */
+    
+    max-width: 450px;
+}
+.feedback-banner-message {
+    flex: 1; /* This pushes the X to the far right */
+}
+
+/* Top vs bottom placement */
+.feedback-banner-top {
+    top: 16px;
+}
+
+.feedback-banner-bottom {
+    bottom: 16px;
+}
+
+.feedback-banner-close {
+    margin-left: 8px;
+    border: none;
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 1;
+    padding: 0 2px;
+}
