@@ -44,6 +44,7 @@ export function isMobileTouchDeviceDev() {
 //   return isTouch && (isPortrait || isNarrow);
 // }
 
+
 export function isMobileTouchDevice() {
     const ua = navigator.userAgent || navigator.vendor || window.opera;
 
@@ -56,6 +57,12 @@ export function isMobileTouchDevice() {
 export function isIOS() {
     const ua = navigator.userAgent || navigator.vendor || window.opera;
     return /iPhone|iPad|iPod/i.test(ua);
+}
+
+export function isAndroid() {
+    const ua = navigator.userAgent || navigator.vendor || window.opera;
+
+    return /Android/i.test(ua);
 }
 
 
