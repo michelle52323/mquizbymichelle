@@ -228,36 +228,6 @@ a:focus {
 }
 
 
-.feedback-banner {
-    display: flex;
-    padding-top: 9px;
-    min-height: 38px;
-    height: 38px;
-    width: 100%;
-    box-sizing: border-box;
-    /* ensures internal padding doesn’t overflow */
-    animation: fadeIn 0.2s ease-in forwards;
-}
-
-.feedback-banner-success {
-
-    background-color: #C5F3C5;
-    color: #437840;
-    width: 100%;
-}
-
-.feedback-banner-error {
-    background-color: #F3C5C5;
-    color: #D84340;
-    width: 100%;
-}
-
-
-.feedback-banner-message {
-    font-size: 14px;
-    padding-left: 3%;
-}
-
 .feedback-icon {
 
     padding-left: 5%;

@@ -1,4 +1,5 @@
 import React from 'react';
+import { isIOS, isAndroid} from '../../../helpers/config';
 import './feedbackbanner.css';
 
 import successIcon from '../../../assets/icons/success-standard-filled-svgrepo-com.svg';
@@ -15,15 +16,22 @@ function FeedbackBanner({ message, onClose }: FeedbackBannerProps) {
 
     const isSuccess = message.toLowerCase().includes('successful');
 
-    const positionClass = isSuccess
-        ? 'feedback-banner-bottom'
-        : 'feedback-banner-top';
+    const positionClass = 'feedback-banner-top';
 
     const bannerClass = `feedback-banner ${positionClass} ${isSuccess ? 'feedback-banner-success' : 'feedback-banner-error'
         }`;
 
 
     const iconHref = isSuccess ? successIcon : failureIcon;
+    const ios = isIOS();
+    const android = isAndroid();
+
+    var iconSize = "20";
+    if (ios)
+        iconSize = "24";
+    if (android)
+        iconSize = "23";
+    
 
     return (
         <div id="feedback-banner" className={bannerClass}>
@@ -31,8 +39,8 @@ function FeedbackBanner({ message, onClose }: FeedbackBannerProps) {
                 <img
                     src={iconHref}
                     alt={isSuccess ? 'Success Icon' : 'Failure Icon'}
-                    width="20"
-                    height="20"
+                    width={iconSize}
+                    height={iconSize}
                 />
             </div>
             <div className="feedback-banner-message">{message}</div>

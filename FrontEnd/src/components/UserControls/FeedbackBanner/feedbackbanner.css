@@ -1,19 +1,43 @@
 .feedback-banner {
     position: fixed;
     right: 16px;
-    z-index: 1000; /* above layout, below modals if you have them */
+    z-index: 1000;
+    /* above layout, below modals if you have them */
     display: flex;
     align-items: center;
     padding: 10px 14px;
     border-radius: 4px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+    /* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18); */
     /* background-color: var(--cardBackgroundColor, #fff); */
-    
+    animation: fadeIn 0.2s ease-in forwards;
+    min-height: 38px;
+    max-height: 64px;
     max-width: 450px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.15), 0 4px 6px -2px rgba(0, 0, 0, 0.10);
 }
+
 .feedback-banner-message {
-    flex: 1; /* This pushes the X to the far right */
+    flex: 1;
+    /* This pushes the X to the far right */
+    font-size: 14px;
+    padding-left: 3%;
 }
+
+@supports (-webkit-touch-callout: none) {
+    .feedback-banner-message {
+        font-size: 16.5px;
+    }
+}
+
+/* Android Chrome (touch devices only) */
+@media (pointer: coarse) {
+    @supports not (-webkit-touch-callout: none) {
+        .feedback-banner-message {
+            font-size: 16px;
+        }
+    }
+}
+
 
 /* Top vs bottom placement */
 .feedback-banner-top {
@@ -30,7 +54,37 @@
     background: transparent;
     color: inherit;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 17px;
     line-height: 1;
     padding: 0 2px;
+}
+
+@supports (-webkit-touch-callout: none) {
+    .feedback-banner-close {
+        font-size: 23px;
+    }
+}
+
+/* Android Chrome (touch devices only) */
+@media (pointer: coarse) {
+    @supports not (-webkit-touch-callout: none) {
+        .feedback-banner-close {
+            font-size: 23px;
+        }
+    }
+}
+
+.feedback-banner-success {
+
+    background-color: #C5F3C5;
+    /* color: #437840; */
+    color: #235820;
+    width: 100%;
+}
+
+.feedback-banner-error {
+    background-color: #F3C5C5;
+    /* color: #D84340; */
+    color: #B82320;
+    width: 100%;
 }
