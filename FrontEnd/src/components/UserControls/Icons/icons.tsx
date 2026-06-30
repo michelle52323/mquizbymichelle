@@ -25,64 +25,69 @@ import moreOptionsIcon from '../../../assets/icons/more-options.svg?raw'
 
 
 const iconMap: Record<string, string> = {
-  drag: dragHandleIcon,
-  home: homeIcon,
-  eye: eyeIcon,
-  leftArrow: leftArrowIcon,
-  rightArrow: rightArrowIcon,
-  error: errorIcon,
-  pencil: pencilIcon,
-  add: addIcon,
-  print: printIcon,
-  save: saveIcon,
-  success: successIcon,
-  delete: deleteIcon,
-  menu: menuIcon,
-  bulletList: bulletListIcon,
-  orderedList: orderedListIcon,
-  chevronUp: chevronUpIcon,
-  chevronDown: chevronDownIcon,
-  warning: warningIcon,
-  review: reviewIcon,
-  answerSelected: answerSelectedIcon,
-  moreOptions: moreOptionsIcon
+    drag: dragHandleIcon,
+    home: homeIcon,
+    eye: eyeIcon,
+    leftArrow: leftArrowIcon,
+    rightArrow: rightArrowIcon,
+    error: errorIcon,
+    pencil: pencilIcon,
+    add: addIcon,
+    print: printIcon,
+    save: saveIcon,
+    success: successIcon,
+    delete: deleteIcon,
+    menu: menuIcon,
+    bulletList: bulletListIcon,
+    orderedList: orderedListIcon,
+    chevronUp: chevronUpIcon,
+    chevronDown: chevronDownIcon,
+    warning: warningIcon,
+    review: reviewIcon,
+    answerSelected: answerSelectedIcon,
+    moreOptions: moreOptionsIcon
 };
 
 const defaultClassMap: Partial<Record<keyof typeof iconMap, string>> = {
-  pencil: 'button-icon-edit',
-  eye: 'button-icon-view',
-  delete: 'button-icon-delete',
-  save: 'button-icon-save',
-  rightArrow: "button-icon-right-arrow",
-  leftArrow: "button-icon-left-arrow",
-  chevronUp: "button-icon-chevron-up",
-  review: "button-icon-review",
-  moreOptions: "button-icon-more-options"
+    pencil: 'button-icon-edit',
+    eye: 'button-icon-view',
+    delete: 'button-icon-delete',
+    save: 'button-icon-save',
+    rightArrow: "button-icon-right-arrow",
+    leftArrow: "button-icon-left-arrow",
+    chevronUp: "button-icon-chevron-up",
+    review: "button-icon-review",
+    moreOptions: "button-icon-more-options"
 };
 
 interface IconProps {
-  name: keyof typeof iconMap;
-  width?: number;
-  height?: number;
-  className?: string;
+    name: keyof typeof iconMap;
+    width?: number;
+    height?: number;
+    className?: string;
+    marginTop?: number;
+    marginLeft?: number;
 }
 
 
-const Icon: React.FC<IconProps> = ({ name, width = 24, height = 24, className }) => {
-  const svgMarkup = iconMap[name];
-  if (!svgMarkup) return null;
+const Icon: React.FC<IconProps> = ({ name, width = 24, height = 24, className, marginTop=0, marginLeft=0 }) => {
+    const svgMarkup = iconMap[name];
+    if (!svgMarkup) return null;
 
-  const defaultClass = defaultClassMap[name] ?? '';
-  const combinedClassName = [defaultClass, className].filter(Boolean).join(' ');
+    const defaultClass = defaultClassMap[name] ?? '';
+    const combinedClassName = [defaultClass, className].filter(Boolean).join(' ');
 
-  return (
-    <div
-      className={combinedClassName}
-      style={{ width, height }}
-      dangerouslySetInnerHTML={{ __html: svgMarkup }}
-      aria-hidden="true"
-    />
-  );
+    return (
+        <div style={{ marginLeft: marginLeft, marginTop: marginTop }}>
+            <div
+                className={combinedClassName}
+                style={{ width, height }}
+                dangerouslySetInnerHTML={{ __html: svgMarkup }}
+                aria-hidden="true"
+            />
+        </div>
+
+    );
 };
 
 export default Icon;

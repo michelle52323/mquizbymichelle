@@ -20,10 +20,11 @@ interface Props {
 
     expandedId: string | null;
     setExpandedId: (id: string | null) => void;
+    deviceType: "desktop" | "mobile";
 
 }
 
-const SortableAnswerChoiceItem: React.FC<Props> = ({ answerChoice, index, onRequestDelete, setAnswerChoices, expandedId, setExpandedId }) => {
+const SortableAnswerChoiceItem: React.FC<Props> = ({ answerChoice, index, onRequestDelete, setAnswerChoices, expandedId, setExpandedId, deviceType = "desktop" }) => {
     const { attributes, listeners, setNodeRef, transform, transition } =
         useSortable({ id: answerChoice.clientId });
 
@@ -80,6 +81,20 @@ const SortableAnswerChoiceItem: React.FC<Props> = ({ answerChoice, index, onRequ
         );
     };
 
+    const iconName = isExpanded ? "chevronUp" : "pencil";
+
+    let iconProps = {};
+
+    if (deviceType === "desktop" && isExpanded) {
+        iconProps = {};
+    } else if (deviceType === "desktop" && !isExpanded) {
+        iconProps = { marginLeft: 1, marginTop: -2 };
+    } else if (deviceType === "mobile" && isExpanded) {
+        iconProps = { marginLeft: 3, marginTop: 0, width: 26, height: 26 };
+    } else {
+        iconProps = { marginLeft: 4, marginTop: 0, width: 26, height: 26 };
+    }
+
     return (
         <div
             ref={setNodeRef}
@@ -115,16 +130,25 @@ const SortableAnswerChoiceItem: React.FC<Props> = ({ answerChoice, index, onRequ
 
                         {/* Radio + icons (col-4) */}
                         <div className="col-2 d-flex justify-content-end align-items-center" style={{ border: "0px solid red" }}>
-                            {answerChoice.isCorrect ? (
-                                <div style={{ paddingTop: "3px" }}>
-                                    <Icon name="success" />
-                                </div>
-                            ) : (
-                                <label className="answer-choice-radio">
-                                    <input type="radio" onChange={handleCorrectSelected} />
-                                    <span className="circle"></span>
-                                </label>
-                            )}
+                            <div style={{ display: "flex", justifyContent: "flex-start" }}>
+                                {answerChoice.isCorrect ? (
+                                    <div style={{ paddingTop: "3px" }}>
+                                        {deviceType == "desktop" ? (
+                                            <Icon name="success" />
+                                        ) :
+                                            (
+                                                <Icon name="success" width={37} height={37} />
+                                            )}
+
+                                    </div>
+                                ) : (
+                                    <label className="answer-choice-radio">
+                                        <input type="radio" onChange={handleCorrectSelected} />
+                                        <span className="circle"></span>
+                                    </label>
+                                )}
+                            </div>
+
 
                         </div>
 
@@ -145,7 +169,8 @@ const SortableAnswerChoiceItem: React.FC<Props> = ({ answerChoice, index, onRequ
                                 setExpandedId(isExpanded ? null : answerChoice.clientId);
                             }}
                         >
-                            <Icon name={isExpanded ? "chevronUp" : "pencil"} />
+                            <Icon name={iconName} {...iconProps} />
+
                         </button>
                     </div>
 
@@ -169,7 +194,7 @@ const SortableAnswerChoiceItem: React.FC<Props> = ({ answerChoice, index, onRequ
                                     onChangeHtml={handleChoiceHtmlChange}
                                     onChangeJson={handleChoiceJsonChange}
                                     onChangeLatex={setLatex}
-                                    splitToolbarOnWidth={850}
+                                    splitToolbarOnWidth={900}
                                 />
                             </div>
 
@@ -189,7 +214,12 @@ const SortableAnswerChoiceItem: React.FC<Props> = ({ answerChoice, index, onRequ
                             className="button button-icon"
                             onClick={() => onRequestDelete(answerChoice)}
                         >
-                            <Icon name="delete" />
+                            {deviceType === "desktop" ? (
+                                <Icon name="delete" marginLeft={2} marginTop={-3} width={21} height={21} />
+                            ) : (
+                                <Icon name="delete" marginLeft={3} marginTop={-3} width={26} height={26} />
+                            )}
+
                         </button>
                     </div>
                 </div>

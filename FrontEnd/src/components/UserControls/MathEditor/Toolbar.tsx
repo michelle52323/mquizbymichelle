@@ -12,7 +12,7 @@ type ToolbarProps = {
 
 export const Toolbar: React.FC<ToolbarProps> = ({ editor, editorId, splitOnWidth }) => {
     const [, rerender] = useState(0);
-
+    
     useEffect(() => {
         if (!editor) return;
 

@@ -97,6 +97,7 @@ function AnswerChoiceListDesktop({ questionId, answerChoices, setAnswerChoices, 
                                     expandedId={expandedId}
                                     setExpandedId={setExpandedId}
                                     onRequestDelete={onRequestDelete}
+                                    deviceType="desktop"
                                 />
                             ))}
                         </SortableContext>

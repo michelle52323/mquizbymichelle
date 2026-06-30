@@ -147,7 +147,7 @@
 @media (max-width: 1200px) {
     .student-quiz-left {
         flex: 1;
-        padding: 15px 4vw 15px 4vw;
+        padding: 15px 2vw 15px 1vw;
         overflow-y: auto;
     }
 }
@@ -211,7 +211,7 @@
 }
 
 .student-quiz-section-content {
-    padding: 15px;
+    padding: 10px;
     border: 1px dashed #666;
     border-radius: 6px;
     background-image: linear-gradient(45deg,
@@ -244,6 +244,21 @@
 .student-answer-choice-row {
     display: flex;
     align-items: flex-start;
+}
+
+@supports (-webkit-touch-callout: none) {
+    .student-answer-choice-row {
+        height: 50px;
+    }
+}
+
+/* Android Chrome (touch devices only) */
+@media (pointer: coarse) {
+    @supports not (-webkit-touch-callout: none) {
+        .student-answer-choice-row {
+            height: 50px;
+        }
+    }
 }
 
 .student-answer-letter {

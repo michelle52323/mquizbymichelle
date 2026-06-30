@@ -88,7 +88,7 @@ const SortableQuizItem: React.FC<Props> = ({ quiz, index, isMobile, openDeleteMo
                                 className="button button-icon"
                                 onClick={() => navigate(`/QuizBuilder/QuizInfo/${quiz.id}`)}
                             >
-                                <Icon name="pencil" />
+                                <Icon name="pencil" marginTop={-2} />
                             </button>
                         </div>
 
@@ -122,7 +122,7 @@ const SortableQuizItem: React.FC<Props> = ({ quiz, index, isMobile, openDeleteMo
                                 data-id={quiz.id}
                                 onClick={openDeleteModal}
                             >
-                                <Icon name="delete" />
+                                <Icon name="delete" marginLeft={2} marginTop={-5} width={21} height={21} />
                             </button>
                         </div>
                     </>

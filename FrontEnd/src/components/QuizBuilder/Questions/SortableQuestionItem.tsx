@@ -86,17 +86,25 @@ const SortableQuestionItem: React.FC<Props> = ({ question, index, openDeleteModa
                         className="button button-icon"
                         onClick={() => navigate(`/QuizBuilder/Questions/Edit/${question.id}`)}
                     >
-                        <Icon name="pencil" />
+                        {deviceType === "desktop" ? (
+                            <Icon name="pencil" marginTop={-2} />
+                        ) : (
+                            <Icon name="pencil" marginLeft={3} marginTop={0} width={26} height={26} />
+                        )}
                     </button>
                 </div>
 
                 {/* Remove Button (text + icon) */}
-                <div className="fixed-button-icon">
+                <div className="fixed-button-icon-small">
                     <button
                         className="button button-icon button-icon-delete"
                         onClick={() => openDeleteModal(question)}
                     >
-                        <Icon name="delete" />
+                        {deviceType === "desktop" ? (
+                            <Icon name="delete" marginLeft={2} marginTop={-5} width={21} height={21} />
+                        ) : (
+                            <Icon name="delete" marginLeft={3} marginTop={-3} width={26} height={26} />
+                        )}
                     </button>
                 </div>
 

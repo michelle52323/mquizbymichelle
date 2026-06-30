@@ -204,8 +204,8 @@ math-field {
 
 
 .text-editor-toolbar button {
-    min-width: 31px;
-    min-height: 31px;
+    min-width: 33px;
+    min-height: 33px;
     background-color: var(--buttonBackgroundColor);
     color: var(--buttonTextColor);
     border: 1px solid var(--editorButtonBorderColor);
@@ -216,7 +216,7 @@ math-field {
 }
 
 .text-editor-biu {
-    height: 31px;
+    height: 33px;
 }
 
 .text-editor-bold {
@@ -291,4 +291,25 @@ math-field {
 
 .tiptap {
     position: relative;
+}
+
+@supports (-webkit-touch-callout: none) {
+
+    .text-editor-toolbar button,
+    .text-editor-biu {
+        min-width: 46px;
+        min-height: 46px;
+    }
+}
+
+/* Android Chrome (touch devices only) */
+@media (pointer: coarse) {
+    @supports not (-webkit-touch-callout: none) {
+
+        .text-editor-toolbar button,
+        .text-editor-biu {
+            min-width: 44px;
+            min-height: 44px;
+        }
+    }
 }

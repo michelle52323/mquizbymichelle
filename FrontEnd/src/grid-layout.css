@@ -29,22 +29,57 @@
 }
 
 .fixed-button {
-    width: 80px; /* or whatever fits your icons/text */
+    width: 80px;
+    /* or whatever fits your icons/text */
     flex-shrink: 0;
 }
 
 .fixed-button-icon {
-    width: 40px; /* or whatever fits your icons/text */
+    width: 40px;
     flex-shrink: 0;
+}
+
+.fixed-button-icon-small {
+    width: 40px;
+    flex-shrink: 0;
+}
+
+@supports (-webkit-touch-callout: none) {
+    .fixed-button-icon {
+        width: 46px;
+        flex-shrink: 0;
+    }
+
+    .fixed-button-icon-small {
+        width: 42px;
+        flex-shrink: 0;
+    }
+}
+
+@media (pointer: coarse) {
+    @supports not (-webkit-touch-callout: none) {
+
+        .fixed-button-icon {
+            width: 46px;
+            flex-shrink: 0;
+        }
+
+        .fixed-button-icon-small {
+            width: 42px;
+            flex-shrink: 0;
+        }
+
+    }
 }
 
 .fixed-textbox {
-    width: 80px; /* or whatever fits your icons/text */
+    width: 80px;
+    /* or whatever fits your icons/text */
     flex-shrink: 0;
 }
 
-.fixed-textbox-large{
-    width:100%;
+.fixed-textbox-large {
+    width: 100%;
 }
 
 .fixed-textbox-XL {
@@ -53,11 +88,13 @@
 
 @media (min-width:1070px) {
     .fixed-button-responsive {
-        width: 80px; /* or whatever fits your icons/text */
+        width: 80px;
+        /* or whatever fits your icons/text */
         flex-shrink: 0;
     }
 
-    .button-tiny-responsive, a.button-tiny-responsive {
+    .button-tiny-responsive,
+    a.button-tiny-responsive {
         display: block;
         width: 75px;
         height: 34px;
@@ -75,7 +112,8 @@
 
 @media (max-width:1069.99px) {
     .fixed-button-responsive {
-        width: 40px; /* or whatever fits your icons/text */
+        width: 40px;
+        /* or whatever fits your icons/text */
         flex-shrink: 0;
     }
 
@@ -84,19 +122,22 @@
         font-size: 12px;
     }
 
-    .button-icon-responsive, a.button-icon-responsive {
+    .button-icon-responsive,
+    a.button-icon-responsive {
         display: block;
         width: 35px;
         height: 34px;
         font-size: 12px;
     }
 
-    
+
 }
+
 @media (min-width:900px) {
-    .col-responsive-drop-first{
-        display:block;
+    .col-responsive-drop-first {
+        display: block;
     }
+
     .truncate-two-lines-responsive-drop-first {
         display: -webkit-box;
         -webkit-line-clamp: 2;
@@ -104,9 +145,10 @@
         overflow: hidden;
     }
 }
+
 @media (max-width:899.99px) {
-    .col-responsive-drop-first{
-        display:none;
+    .col-responsive-drop-first {
+        display: none;
     }
 }
 
@@ -208,7 +250,8 @@
 
 /* End of three-tiered display logic */
 
-.button-tiny-responsive-mobile, a.button-tiny-responsive-mobile {
+.button-tiny-responsive-mobile,
+a.button-tiny-responsive-mobile {
     display: block;
     width: 75px;
     height: 34px;
@@ -242,7 +285,8 @@
     width: 100%;
     height: 370px;
     border: none;
-    overflow-y: auto; /* Ensure all content is visible */
+    overflow-y: auto;
+    /* Ensure all content is visible */
 }
 
 .gof-tall {
@@ -285,7 +329,7 @@
 }
 
 
-.gof-short{
+.gof-short {
     min-height: calc(var(--vh) - 450px);
 }
 
@@ -297,8 +341,8 @@
     min-height: calc(var(--vh) - 210px);
 }
 
-.gof-mobile-short{
-   min-height: calc(var(--vh) - 550px);
+.gof-mobile-short {
+    min-height: calc(var(--vh) - 550px);
 }
 
 .gof-row {
@@ -308,7 +352,8 @@
 }
 
 .sortable-ghost {
-    opacity: 0.5; /* Makes the dragged item semi-transparent */
+    opacity: 0.5;
+    /* Makes the dragged item semi-transparent */
     border: 2px dashed #888;
     background-color: var(--sortableHighlightBackColor);
     /*background-image: linear-gradient(45deg, var(--sortableHighlightBackColor, var(--sortableHighlightBackColorGradient));*/
@@ -317,57 +362,81 @@
 
 .drag-handle {
     cursor: grab;
-    height: 100%; /* Ensure full height coverage */
-    align-items: center; /* Keeps the handle visually aligned */
+    height: 100%;
+    /* Ensure full height coverage */
+    align-items: center;
+    /* Keeps the handle visually aligned */
     min-height: 40px;
     touch-action: none;
 }
 
-    .drag-handle:active {
-        cursor: grabbing;
-    }
+.drag-handle:active {
+    cursor: grabbing;
+}
 
 .mobile-drag-handle {
-    touch-action: none; /* Ensures touch gestures trigger dragging */
+    touch-action: none;
+    /* Ensures touch gestures trigger dragging */
     cursor: grab;
     font-size: 18px;
     padding-left: 5px;
-    height: 100%; /* Ensure full height coverage */
+    height: 100%;
+    /* Ensure full height coverage */
     min-height: 40px;
-    align-items: center; /* Keeps the handle visually aligned */
+    align-items: center;
+    /* Keeps the handle visually aligned */
     float: left;
 }
 
-    .mobile-drag-handle:active {
-        cursor: grabbing;
-    }
+.mobile-drag-handle:active {
+    cursor: grabbing;
+}
 
-.drag-handle-width-desktop{
+.drag-handle-width-desktop {
     width: 40px;
 }
 
-.drag-handle-width-answer-choice{
+.drag-handle-width-answer-choice {
     width: 35px;
 }
 
 .drag-handle-column {
-    width: 40px; /* or whatever fits your SVG comfortably */
+    width: 40px;
+    /* or whatever fits your SVG comfortably */
     flex-shrink: 0;
 }
 
 .content-column {
     flex-grow: 1;
-    min-width: 0; /* ensures text truncation works properly */
+    min-width: 0;
+    /* ensures text truncation works properly */
     padding-right: 5px;
 }
 
 .action-column {
-    width: 51px; /* adjust based on accordion or button layout */
+    width: 36px;
+    /* adjust based on accordion or button layout */
     flex-shrink: 0;
     margin-left: auto;
 }
 
-.mobile-content-col-height{
+@supports (-webkit-touch-callout: none) {
+    .action-column {
+        width: 44px;
+    }
+}
+
+@media (pointer: coarse) {
+    @supports not (-webkit-touch-callout: none) {
+
+        .action-column {
+            width: 44px;
+        }
+    }
+}
+
+
+.mobile-content-col-height {
     height: 41px;
 }
 
@@ -393,19 +462,21 @@
 }
 
 .accordion-content {
-    display: none; /* hidden by default */
+    display: none;
+    /* hidden by default */
 }
 
-    .accordion-content.show {
-        display: block; /* visible when toggled */
-    }
-
-
-.accordion-content-inner{
-    width:100%;
+.accordion-content.show {
+    display: block;
+    /* visible when toggled */
 }
 
-.empty-grid{
+
+.accordion-content-inner {
+    width: 100%;
+}
+
+.empty-grid {
     padding-top: 15px;
     font-size: 16px;
 }
@@ -417,7 +488,8 @@
 
 .unit-label {
     white-space: nowrap;
-    margin-left: 0.5em; /* or try 0.25em for a bit more breathing room */
+    margin-left: 0.5em;
+    /* or try 0.25em for a bit more breathing room */
 }
 
 /* iOS-specific overrides */
@@ -426,11 +498,9 @@
     flex-wrap: nowrap;
 }
 
-.unit-label-ios {
-    
-}
+.unit-label-ios {}
 
-.border-red{
+.border-red {
     border: 1px solid red;
 }
 
@@ -439,4 +509,19 @@
     flex-direction: column; */
     overflow-x: hidden;
     min-height: 56.25px;
+}
+
+@supports (-webkit-touch-callout: none) {
+    .answer-choice-row {
+        min-height: 60px;
+    }
+}
+
+/* Android Chrome (touch devices only) */
+@media (pointer: coarse) {
+    @supports not (-webkit-touch-callout: none) {
+        .answer-choice-row {
+            min-height: 60px;
+        }
+    }
 }

@@ -124,7 +124,7 @@ const MobileQuizActionsMenu: React.FC<Props> = ({
                         }}
                     >
                         <div className="menu-icon">
-                            <Icon name="delete" />
+                            <Icon name="delete" marginTop={-5} width={21} height={21} />
                         </div>
                         <div className="menu-text">Delete</div>
                     </button>

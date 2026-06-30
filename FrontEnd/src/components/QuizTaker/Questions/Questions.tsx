@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useOutletContext, useParams, useNavigate, useLocation } from 'react-router-dom';
 import type { LayoutContext } from '../../Layout';
-import { getApiBaseUrl } from '../../../helpers/config';
+import { getApiBaseUrl, isMobileTouchDevice } from '../../../helpers/config';
 import ButtonGrid from '../../../components/UserControls/ButtonGrid/ButtonGrid';
 import { useQuiz } from "../../QuizTaker/QuizProvider/QuizProvider";
 import { renderMathInHtml } from '../../../helpers/mathHelper';
@@ -42,7 +42,7 @@ export default function Questions() {
 
     const disablePrevious = isFirstQuestion;
     const showCompleteQuiz = isLastQuestion;
-
+    const isMobile = isMobileTouchDevice();
 
 
     useEffect(() => {
@@ -275,117 +275,123 @@ export default function Questions() {
     };
 
 
-if (!answerSheet.attempt.isCompleted)
-    return (
-        <>
-            <form id="page-form">
-                <div className="page-container w-100">
-                    <div className="content-holder-desktop quiz-page-content">
+    if (!answerSheet.attempt.isCompleted)
+        return (
+            <>
+                <form id="page-form">
+                    <div className="page-container w-100">
+                        <div className="content-holder-desktop quiz-page-content">
 
-                        {/* Progress bar (Question X of Y) */}
-                        <div className="quiz-taker-progress-bar">
-                            <span className="student-question-number">Question {currentQuestionNumber} of {quiz.questions.length}</span>
-                        </div>
+                            {/* Progress bar (Question X of Y) */}
+                            <div className="quiz-taker-progress-bar">
+                                <span className="student-question-number">Question {currentQuestionNumber} of {quiz.questions.length}</span>
+                            </div>
 
-                        <div className="student-quiz-main pt-2">
-                            {/* <div className="student-quiz-left-padding"></div> */}
-                            <div className="student-quiz-left student-quiz-main-section">
-                                <div className="student-quiz-section-content">
-                                    <div className="student-question-overflow-box inner-content-background">
+                            <div className="student-quiz-main pt-2">
+                                {/* <div className="student-quiz-left-padding"></div> */}
+                                <div className="student-quiz-left student-quiz-main-section">
+                                    <div className="student-quiz-section-content">
+                                        <div className="student-question-overflow-box inner-content-background">
 
 
-                                        <div className="student-question-header ps-3 pt-2">
-                                            Question {currentQuestionNumber}
-                                        </div>
+                                            <div className="student-question-header ps-3 pt-2">
+                                                Question {currentQuestionNumber}
+                                            </div>
 
-                                        {/* Question text */}
-                                        <div
-                                            className="student-question-text ps-3"
-                                            dangerouslySetInnerHTML={{ __html: renderMathInHtml(question.description) }}
-                                        />
-                                        <div className="pb-3"></div>
-                                        {/* Answer choices */}
-                                        <div className="student-answer-choices">
-                                            {question.answerChoices.map((choice, index) => (
-                                                <div key={choice.id} className="student-answer-choice-row">
+                                            {/* Question text */}
+                                            <div
+                                                className="student-question-text ps-3"
+                                                dangerouslySetInnerHTML={{ __html: renderMathInHtml(question.description) }}
+                                            />
+                                            <div className="pb-3"></div>
+                                            {/* Answer choices */}
+                                            <div className="student-answer-choices">
+                                                {question.answerChoices.map((choice, index) => (
+                                                    <div key={choice.id} className="student-answer-choice-row">
 
-                                                    {/* Letter (A, B, C, …) */}
-                                                    <div className="student-answer-letter col-2">
-                                                        {String.fromCharCode(65 + index)}
-                                                    </div>
+                                                        {/* Letter (A, B, C, …) */}
+                                                        <div className="student-answer-letter col-2">
+                                                            {String.fromCharCode(65 + index)}
+                                                        </div>
 
-                                                    {/* Main answer text */}
-                                                    <div
-                                                        className="student-answer-text col-8"
-                                                        dangerouslySetInnerHTML={{ __html: renderMathInHtml(choice.description) }}
-                                                    />
+                                                        {/* Main answer text */}
+                                                        <div
+                                                            className="student-answer-text col-8"
+                                                            s
+                                                            dangerouslySetInnerHTML={{ __html: renderMathInHtml(choice.description) }}
+                                                        />
 
-                                                    {/* Radio placeholder */}
-                                                    <div className="student-answer-radio-placeholder col-2">
-                                                        {/* radio goes here later */}
-                                                        <label className="answer-choice-radio ">
-                                                            {choice.isSelected ? (
-                                                                <span className="selected-answer-choice-margin-neutralizer">
-                                                                    <Icon name="answerSelected" width={22} height={22} />
-                                                                </span>
+                                                        {/* Radio placeholder */}
+                                                        <div className="student-answer-radio-placeholder col-2" >
+                                                            {/* radio goes here later */}
+                                                            <label className="answer-choice-radio ">
+                                                                {choice.isSelected ? (
+                                                                    <span className="selected-answer-choice-margin-neutralizer">
+                                                                        {isMobile ? (
+                                                                            <Icon name="answerSelected" width={38} height={38} marginLeft={-1} />
+                                                                        ) : (
+                                                                            <Icon name="answerSelected" width={22} height={22} />
+                                                                        )}
 
-                                                            ) : (
-                                                                <>
-                                                                    <span className="answer-choice-margin-neutralizer">
-                                                                        <input
-                                                                            type="radio"
-                                                                            onChange={() => handleCorrectSelected(choice.id)}
-                                                                        />
-                                                                        <span className="circle"></span>
                                                                     </span>
 
-                                                                </>
-                                                            )}
-                                                        </label>
+                                                                ) : (
+                                                                    <>
+                                                                        <span className="answer-choice-margin-neutralizer">
+                                                                            <input
+                                                                                type="radio"
+                                                                                onChange={() => handleCorrectSelected(choice.id)}
+                                                                            />
+                                                                            <span className="circle"></span>
+                                                                        </span>
+
+                                                                    </>
+                                                                )}
+                                                            </label>
+
+                                                        </div>
 
                                                     </div>
+                                                ))}
+                                            </div>
+                                            <div className="pb-2"></div>
 
-                                                </div>
-                                            ))}
+
                                         </div>
-                                        <div className="pb-2"></div>
-
-
                                     </div>
+
                                 </div>
 
                             </div>
-
                         </div>
                     </div>
-                </div>
-            </form>
-            {/* BUTTON GRID */}
-            <ButtonGrid
-                buttons={[
-                    {
-                        text: "Previous",
-                        onClick: handlePrevious,
-                        icon: <Icon name="leftArrow" />,
-                        type: "button",
-                        mobileSlot: 1,
-                        desktopSlot: 1,
-                        isDisabled: disablePrevious
-                    },
-                    {
-                        text: showCompleteQuiz ? "Complete Quiz" : "Next",
-                        onClick: handleNext,
-                        icon: showCompleteQuiz ? null : <Icon name="rightArrow" />,
-                        type: "button",
-                        mobileSlot: 3,
-                        desktopSlot: 5
-                    }
-                ]}
-            />
+                </form>
+                {/* BUTTON GRID */}
+                <ButtonGrid
+                    buttons={[
+                        {
+                            text: "Previous",
+                            onClick: handlePrevious,
+                            icon: <Icon name="leftArrow" />,
+                            type: "button",
+                            mobileSlot: 1,
+                            desktopSlot: 1,
+                            isDisabled: disablePrevious
+                        },
+                        {
+                            text: showCompleteQuiz ? "Complete Quiz" : "Next",
+                            onClick: handleNext,
+                            icon: showCompleteQuiz ? null : <Icon name="rightArrow" />,
+                            type: "button",
+                            mobileSlot: 3,
+                            desktopSlot: 5
+                        }
+                    ]}
+                />
 
-        </>
-    );
-else
-    return(<></>);
+            </>
+        );
+    else
+        return (<></>);
 
 }

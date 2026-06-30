@@ -98,6 +98,7 @@ function AnswerChoiceListMobile({ questionId, answerChoices, setAnswerChoices, o
                                     expandedId={expandedId}
                                     setExpandedId={setExpandedId}
                                     onRequestDelete={onRequestDelete}
+                                    deviceType="mobile"
                                 />
                             ))}
                         </SortableContext>

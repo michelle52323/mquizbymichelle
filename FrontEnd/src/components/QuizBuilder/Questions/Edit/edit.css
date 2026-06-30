@@ -175,7 +175,7 @@
 }
 
 .edit-section-content {
-    padding: 15px;
+    padding: 10px;
     border: 1px dashed #666;
     border-radius: 6px;
     background-image: linear-gradient(45deg, var(--editSectionContentTextColor), var(--editSectionContentTextColorGradient));

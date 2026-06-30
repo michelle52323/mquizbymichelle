@@ -5,6 +5,7 @@
 
     --radioHoverBackgroundColor: color-mix(in srgb, var(--radioHoverColor), white 30%);
 }
+
 .answer-choice-radio {
     position: relative;
     display: inline-flex;
@@ -42,6 +43,35 @@
     transition: background 0.2s ease;
 }
 
+@supports (-webkit-touch-callout: none) {
+    .answer-choice-radio .circle {
+
+        height: 35px;
+        width: 35px;
+
+    }
+
+    .answer-choice-radio .circle::before {
+        height: 35px;
+        width: 35px;
+    }
+}
+
+/* Android Chrome (touch devices only) */
+@media (pointer: coarse) {
+    @supports not (-webkit-touch-callout: none) {
+        .answer-choice-radio .circle {
+            height: 35px;
+            width: 35px;
+        }
+
+        .answer-choice-radio .circle::before {
+            height: 35px;
+            width: 35px;
+        }
+    }
+}
+
 /* hover effect */
 /* .answer-choice-radio:hover .circle {
     border-color: var(--radioHoverColor);
@@ -54,19 +84,19 @@
 }
 
 /* checked state */
-.answer-choice-radio input[type="radio"]:checked + .circle {
+.answer-choice-radio input[type="radio"]:checked+.circle {
     border-color: var(--radioCheckColor);
 }
 
-.answer-choice-radio input[type="radio"]:checked + .circle::before {
+.answer-choice-radio input[type="radio"]:checked+.circle::before {
     background: var(--radioCheckColor);
 }
 
-.answer-choice-margin-neutralizer{
+.answer-choice-margin-neutralizer {
     margin-left: -60px;
 }
 
-.selected-answer-choice-margin-neutralizer{
+.selected-answer-choice-margin-neutralizer {
     margin-left: -1px;
     margin-bottom: 1px;
 }

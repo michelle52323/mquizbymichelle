@@ -394,7 +394,7 @@ a:focus {
     padding: 0px 4vw 0px 4vw;
     width: 100%;
     height: 100%;
-    
+
 }
 
 @media (max-width : 767px) {
@@ -460,11 +460,11 @@ a:focus {
     height: 139px;
 }
 
-.height-200{
+.height-200 {
     height: 200px
 }
 
-.height-410{
+.height-410 {
     height: 410px;
 }
 
@@ -515,7 +515,7 @@ label {
 .textbox {
     padding-left: 10px;
     padding-right: 10px;
-    height: 33px;
+    height: 37px;
     border: 2px solid;
     border-radius: 4px;
     background-color: var(--textBoxBackColor);
@@ -924,7 +924,8 @@ a.button-tiny-ios {
     font-size: 14px;
     border: none;
     z-index: 1;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    /* box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.9); */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.55), 0 4px 6px -2px rgba(0, 0, 0, 0.50);
     cursor: pointer;
     /* Adjust height to fit ~7 items */
     overflow-y: auto;
@@ -1457,6 +1458,116 @@ a.button-tiny-ios {
 .mobile-bottom-sheet.closing {
     animation: slideDown 0.15s ease-in forwards;
 }
+
+@supports (-webkit-touch-callout: none) {
+
+    .button,
+    .button-disabled {
+        min-width: 42px;
+        min-height: 42px;
+    }
+
+    .button-icon,
+    .button-icon-full-screen {
+        width: 42px;
+        height: 42px;
+    }
+
+    .textbox {
+        height: 42px;
+    }
+
+    .margin-1 {
+        margin-left: 1px;
+    }
+
+    .margin-2 {
+        margin-left: 2px;
+    }
+
+
+    .margin-3 {
+        margin-left: 3px;
+    }
+
+    .margin-4 {
+        margin-left: 4px;
+    }
+
+    .margin-5 {
+        margin-left: 5px;
+    }
+
+    .dropdown-value {
+        height: 42px;
+        padding-top: 9px;
+    }
+
+    .dropdown-value {
+        height: 42px;
+        padding-top: 9px;
+    }
+
+    .dropdown-content a {
+        height: 40px;
+    }
+
+
+}
+
+/* Android Chrome (touch devices only) */
+@media (pointer: coarse) {
+    @supports not (-webkit-touch-callout: none) {
+
+        .button,
+        .button-disabled {
+            min-width: 42px;
+            min-height: 42px;
+        }
+
+        .button-icon,
+        .button-icon-full-screen {
+            width: 42px;
+            height: 42px;
+        }
+
+        .textbox {
+            height: 42px;
+        }
+
+        .margin-1 {
+            margin-left: 1px;
+        }
+
+        .margin-2 {
+            margin-left: 2px;
+        }
+
+
+        .margin-3 {
+            margin-left: 3px;
+        }
+
+        .margin-4 {
+            margin-left: 4px;
+        }
+
+        .margin-5 {
+            margin-left: 5px;
+        }
+
+        .dropdown-value {
+            height: 42px;
+            padding-top: 9px;
+        }
+
+        .dropdown-content a {
+            height: 40px;
+        }
+
+    }
+}
+
 
 
 

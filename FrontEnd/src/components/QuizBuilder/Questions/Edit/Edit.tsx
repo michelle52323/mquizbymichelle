@@ -1121,6 +1121,7 @@ export const Edit: React.FC<EditProps> = ({ mode, quizId }) => {
                                                         onChangeHtml={setHtml}
                                                         onChangeJson={setHtmlEditorJson}
                                                         onChangeLatex={setLatex}
+                                                        splitToolbarOnWidth={550}
                                                     />
 
 
