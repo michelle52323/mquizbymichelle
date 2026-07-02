@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useOutletContext } from 'react-router-dom';
 import CheckAuth from '../../../components/Account/CheckAuth';
-import { getApiBaseUrl } from '../../../helpers/config';
+import { getApiBaseUrl, isAndroid, isIOS } from '../../../helpers/config';
 import { Dropdown } from "../../UserControls/Dropdown/Dropdown";
 import ButtonGrid from "../../UserControls/ButtonGrid/ButtonGrid";
 import Loader from '../../UserControls/Loader/Loader';
@@ -31,6 +31,9 @@ const ThemeSelectorPage: React.FC = () => {
 
     const navigate = useNavigate();
     const API_BASE = getApiBaseUrl();
+    const android = isAndroid();
+    const ios = isIOS();
+    const dropdownWidth = ios ? 190 : 175;
 
     const { setTitle, setBanner } = useOutletContext();
 
@@ -353,7 +356,7 @@ const ThemeSelectorPage: React.FC = () => {
                                                 selectedId={selectedTheme}
                                                 onSelect={handleSelect}
                                                 maxHeight={280}
-                                                width={170}
+                                                width={dropdownWidth}
                                             />
                                         </div>
 

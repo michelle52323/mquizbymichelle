@@ -458,6 +458,7 @@ const Profile: React.FC = () => {
                                                 genderId: id
                                             }))
                                         }
+                                        width={175}
 
                                     />
                                 </div>

@@ -911,9 +911,9 @@ a.button-tiny-ios {
 
 
 /* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {
+/* .dropdown:hover .dropdown-content {
     display: block;
-}
+} */
 
 /* Dropdown Content (Hidden by Default) */
 .dropdown-content {

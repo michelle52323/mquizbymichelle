@@ -389,7 +389,7 @@ const QuizInfo: React.FC = () => {
                                         setSelectedCategory({ id, text });
                                         setQuiz(prev => ({ ...prev, subjectId: id }));
                                     }}
-                                    width={250}
+                                    width={270}
 
                                 />
                                 {errors.quiz?.subjectId ? (
